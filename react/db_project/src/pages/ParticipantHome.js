@@ -1,20 +1,26 @@
 import * as React from "react";
 import {makeStyles} from "@material-ui/core/styles";
 import OrangeButton from "../components/OrangeButton";
+import {TextField} from "@material-ui/core";
 
 const useStyles = makeStyles({
 
     header: {
-        backgroundColor: "rgba(236,74,5,0.66)",
+        backgroundColor: "#DA7840",
         width: "100%",
         height: "100px",
-        paddingTop: "10px",
+        padding: "10px",
         boxSizing: "border-box",
         display: "flex",
         justifyContent: "space-between",
         '& h3': {
             color: "white",
-            fontSize: "30px",
+            fontSize: "39px",
+            margin: "20px",
+        },
+        '& button': {
+            marginTop : "20px",
+
         }
     },
 
@@ -47,6 +53,33 @@ const useStyles = makeStyles({
         }
     },
 
+    buttons:{
+        display: "flex",
+        justifyContent:"flex-end",
+        marginTop:"10px",
+    },
+
+    searchBox:{
+        display:"flex",
+        justifyContent:"center",
+        margin:"20px",
+        '& button': {
+        marginLeft:"20px",
+            height:"30px",
+            width:"100px",
+            backgroundColor: "rgba(168,157,157,0.66)",
+            borderRadius: "5px",
+            borderColor: "rgba(168,157,157,0.66)",
+            '&:hover': {
+                backgroundColor: "rgba(203,196,196,0.66)",
+            }
+        }
+
+    },
+    searchBar:{
+        width:"300px",
+    }
+
 
 });
 
@@ -64,6 +97,14 @@ const ParticipantHome = () => {
             <div className={classes.header}>
                 <h3>Welcome Irem</h3>
                 <OrangeButton name={"create an event"}/>
+            </div>
+            <div className={classes.buttons}>
+                <OrangeButton name={"Tickets"}/>
+                <OrangeButton name={"Wallet"}/>
+            </div>
+            <div className={classes.searchBox}>
+                <TextField className={classes.searchBar} id="outlined-search"  placeholder="Search an event!" type="search" />
+            <button>All events</button>
             </div>
             <div className={classes.container}>
                 <h3>Upcoming Events</h3>{
