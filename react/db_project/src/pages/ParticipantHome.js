@@ -2,6 +2,7 @@ import * as React from "react";
 import {makeStyles} from "@material-ui/core/styles";
 import OrangeButton from "../components/OrangeButton";
 import {TextField} from "@material-ui/core";
+import {Link} from "react-router-dom";
 
 const useStyles = makeStyles({
 
@@ -43,7 +44,7 @@ const useStyles = makeStyles({
         marginTop: "10px",
         justifyContent: "space-between",
         '& button': {
-
+            cursor: "pointer",
             backgroundColor: "red",
             borderRadius: "5px",
             borderColor: "red",
@@ -67,6 +68,7 @@ const useStyles = makeStyles({
         marginLeft:"20px",
             height:"30px",
             width:"100px",
+            cursor: "pointer",
             backgroundColor: "rgba(168,157,157,0.66)",
             borderRadius: "5px",
             borderColor: "rgba(168,157,157,0.66)",
@@ -96,10 +98,10 @@ const ParticipantHome = () => {
         <div>
             <div className={classes.header}>
                 <h3>Welcome Irem</h3>
-                <OrangeButton name={"create an event"}/>
+                <Link to={"/organizerHome"}><OrangeButton name={"create an event"}/></Link>
             </div>
             <div className={classes.buttons}>
-                <OrangeButton name={"Tickets"}/>
+                <Link to={"/ticketsPage"}><OrangeButton name={"Tickets"}/></Link>
                 <OrangeButton name={"Wallet"}/>
             </div>
             <div className={classes.searchBox}>
