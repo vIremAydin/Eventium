@@ -36,7 +36,7 @@
     </div>
     <div class="col-6">
       <button id="login-btn" type="submit" class="btn btn-primary" value="Submit">Login</button>
-
+      <a href="./register.php">Not registered yet?</a>
     </div>
   </div>
 </form>
