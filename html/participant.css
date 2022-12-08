@@ -54,3 +54,6 @@ font-size: 22px;
     width: 30px;
     cursor: pointer;
 }
+.my-header{
+    font-weight: bold;
+}
