@@ -57,3 +57,11 @@ font-size: 22px;
 .my-header{
     font-weight: bold;
 }
+
+.table-container{
+    margin: auto;
+    width: 80%;
+    border: 1px solid lightgrey;
+    padding: 10px;
+
+}

@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="f7c6b7d0-7244-4ac1-8ebe-ae1d129aebbc" name="Changes" comment="participant.css participant.html &#10;added">
-      <change afterPath="$PROJECT_DIR$/html/ticket.html" afterDir="false" />
+    <list default="true" id="f7c6b7d0-7244-4ac1-8ebe-ae1d129aebbc" name="Changes" comment="ticket.html">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/html/participant.css" beforeDir="false" afterPath="$PROJECT_DIR$/html/participant.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/html/ticket.html" beforeDir="false" afterPath="$PROJECT_DIR$/html/ticket.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -65,7 +66,8 @@
       <updated>1670100117567</updated>
       <workItem from="1670100118975" duration="5311000" />
       <workItem from="1670439239511" duration="3651000" />
-      <workItem from="1670529591555" duration="304000" />
+      <workItem from="1670529591555" duration="928000" />
+      <workItem from="1670687682515" duration="300000" />
     </task>
     <task id="LOCAL-00001" summary="login added">
       <created>1670100154978</created>
@@ -102,7 +104,14 @@
       <option name="project" value="LOCAL" />
       <updated>1670442698412</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="ticket.html">
+      <created>1670530120972</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1670530120972</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -125,6 +134,7 @@
     <MESSAGE value="login added" />
     <MESSAGE value="reg added" />
     <MESSAGE value="participant.css participant.html &#10;added" />
-    <option name="LAST_COMMIT_MESSAGE" value="participant.css participant.html &#10;added" />
+    <MESSAGE value="ticket.html" />
+    <option name="LAST_COMMIT_MESSAGE" value="ticket.html" />
   </component>
 </project>
