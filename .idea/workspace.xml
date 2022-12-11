@@ -1,10 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="f7c6b7d0-7244-4ac1-8ebe-ae1d129aebbc" name="Changes" comment="verifiedOrganizer.html added">
-      <change afterPath="$PROJECT_DIR$/html/admin-style.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/html/adminHome.html" afterDir="false" />
+    <list default="true" id="f7c6b7d0-7244-4ac1-8ebe-ae1d129aebbc" name="Changes" comment="admin-style.css adminHome.html added">
+      <change afterPath="$PROJECT_DIR$/html/event-detail.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/icons/icons8-back-arrow-32.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/icons/logout.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/html/organizerHome.html" beforeDir="false" afterPath="$PROJECT_DIR$/html/organizerHome.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/html/participant.css" beforeDir="false" afterPath="$PROJECT_DIR$/html/participant.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/html/participant.html" beforeDir="false" afterPath="$PROJECT_DIR$/html/participant.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/html/verifiedOrganizer.html" beforeDir="false" afterPath="$PROJECT_DIR$/html/verifiedOrganizer.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -46,14 +51,14 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/html" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/icons" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\Users\virem\WebstormProjects\Eventium_1\html" />
       <recent name="C:\Users\virem\WebstormProjects\Eventium_1\icons" />
+      <recent name="C:\Users\virem\WebstormProjects\Eventium_1\html" />
     </key>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
@@ -68,7 +73,7 @@
       <workItem from="1670439239511" duration="3651000" />
       <workItem from="1670529591555" duration="928000" />
       <workItem from="1670687682515" duration="2870000" />
-      <workItem from="1670765163486" duration="2811000" />
+      <workItem from="1670765163486" duration="5563000" />
     </task>
     <task id="LOCAL-00001" summary="login added">
       <created>1670100154978</created>
@@ -133,7 +138,14 @@
       <option name="project" value="LOCAL" />
       <updated>1670690255401</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="admin-style.css adminHome.html added">
+      <created>1670774743446</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1670774743446</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -160,6 +172,7 @@
     <MESSAGE value="ticket.html finished" />
     <MESSAGE value="organizerHome.html added." />
     <MESSAGE value="verifiedOrganizer.html added" />
-    <option name="LAST_COMMIT_MESSAGE" value="verifiedOrganizer.html added" />
+    <MESSAGE value="admin-style.css adminHome.html added" />
+    <option name="LAST_COMMIT_MESSAGE" value="admin-style.css adminHome.html added" />
   </component>
 </project>
