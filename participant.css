@@ -37,9 +37,9 @@ font-size: 22px;
 .name{
     font-weight: bold;
 }
+.details{
 
-/*.details{}*/
-
+}
 .cancel{
     background-color: red;
     border: red 10px;
@@ -64,4 +64,33 @@ font-size: 22px;
     border: 1px solid lightgrey;
     padding: 10px;
 
+}
+.event-box{
+    background-color: lightgrey;
+    text-align: center;
+    padding: 20px;
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+}
+h4{
+    font-size: 20px;
+    font-weight: lighter;
+    margin: 10px;
+}
+
+
+.btn-container{
+    padding: 40px;
+    margin: auto;
+    width: 30%;
+}
+
+.go-back{
+    display: flex;
+    margin: 20px;
+}
+span{
+    font-weight: lighter;
+    margin-left: 20px;
 }

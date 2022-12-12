@@ -84,5 +84,12 @@ $connection->close();
 
 </div>
 
+<div class="go-back">
+    <button style="background-color: transparent; border-width: 0;" onclick="window.location.href='./participant_home.php';">
+        <img class="image-back" src="icons/icons8-back-arrow-32.png" alt="back"/>
+        <span>Go back to the home page</span>
+    </button>
+</div>
+
 </body>
 </html>

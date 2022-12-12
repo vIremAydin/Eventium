@@ -78,8 +78,10 @@ $connection->close();
        <div class="date"><?php echo $result2['event_date']; ?></div>
        <div class="name"><?php echo $result2['event_title']; ?></div>
        <div ><?php echo $result2['event_description']; ?></div>
+       <div >
+       <button class="cancel" style="background-color: #198754;" onclick="window.location.href='./joined_event_detail.php?data=<?php echo $result2['event_id'];?>';">details</button>
         <button class="cancel" onclick="window.location.href='./cancel.php?data=<?php echo $result2['event_id'];?>';">cancel</button>
-       
+       </div>
        </li>
        <?php $count = $count + 1; }
             if ($count == 0) {
