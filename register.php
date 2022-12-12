@@ -110,21 +110,19 @@
     require('connection.php');    
     session_start();
 
-    echo "<script type='text/javascript'>alert('bok öncesi');</script>";
     if( isset($_POST['email']) && isset($_POST['password']) && isset($_POST['first-name']) && isset($_POST['last-name']) && isset($_POST['city']) && isset($_POST['province']) && isset($_POST['street']) && isset($_POST['postal-code']) && isset($_POST['phone']) && isset($_POST['bdate']) ) {
-        echo "<script type='text/javascript'>alert('bok');</script>";
         if( $statement = $connection->prepare( "INSERT INTO user VALUES (NULL, ?, ?) ") ){
             $statement->bind_param( "ss", $_POST['password'], $_POST['email']);
-            echo "<script type='text/javascript'>alert('bind 1st query');</script>";
+            
             if ($statement->execute()) {
-                echo "<script type='text/javascript'>alert('execute 1st query');</script>";
+                
                 $mail = $_POST['email'];
                 $statement = $connection->query("SELECT user_id FROM user WHERE email = '$mail'");
                 $userID = ($statement->fetch_assoc())['user_id'];
                 if($statement = $connection->prepare( "INSERT INTO non_admin VALUES ('$userID', ?, ?, ?, ?, ?, ?, ?, ?, ?) " )){
-                    echo "<script type='text/javascript'>alert('prepare 2nd query');</script>";
+                    
                     $statement->bind_param( "ssssssiss", $_POST['first-name'], $_POST['middle-name'], $_POST['last-name'], $_POST['street'], $_POST['province'], $_POST['city'], $_POST['postal-code'], $_POST['bdate'], $_POST['phone'] );
-                    echo "<script type='text/javascript'>alert('bind 2nd query');</script>";
+                    
                     if ($statement->execute()) {
                         echo "<script type='text/javascript'>alert('You have now registered!');</script>";
                         echo("<script>window.location = 'login.php';</script>");

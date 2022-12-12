@@ -50,49 +50,71 @@
     
     session_start();
 
-    if( isset($_POST['login-mail']) && isset($_POST['login-password']) ) {
+    if (isset($_POST['login-mail']) && strlen($_POST['login-mail']) && isset($_POST['login-password']) && strlen($_POST['login-password'])) {
 
-      if( $statement = $connection->prepare( "SELECT nickname, password FROM user NATURAL JOIN admin WHERE nickname = ? and password = ?")){
+      if ($statement = $connection->prepare("SELECT user_id FROM verified_organizer NATURAL JOIN user WHERE email = ? and password = ?")) {
+    
+        $statement->bind_param("ss", $_POST['login-mail'], $_POST['login-password']);
+    
+    
+        if ($statement->execute()) {
+          $statement->bind_result($id);
+    
+          if ($statement->fetch()) {
+            $_SESSION['user_id'] = $id;
+            header("location: verifiedOrganizer_home.php");
+            exit();
+          } else {
+            echo "<script type='text/javascript'>alert('Incorrect information!');</script>";
+          }
+        }
+    
+        $statement->close();
+      }
+    }
+
+    if( isset($_POST['login-mail']) && strlen($_POST['login-mail']) && isset($_POST['login-password']) && strlen($_POST['login-password']) ) {
+
+      if( $statement = $connection->prepare( "SELECT user_id FROM user NATURAL JOIN admin WHERE nickname = ? and password = ?")){
         
           $statement->bind_param( "ss", $_POST['login-mail'], $_POST['login-password']);
           
-          
           if( $statement->execute()){
-            
+            $statement->bind_result($id);
               if( $statement->fetch()){
-                  $_SESSION['login-mail'] = $_POST['login-mail'];
-                  $_SESSION['login-password'] = $_POST['login-password'];
-                  
-                  header( "location: admin_home.php");
-              } 
+                $_SESSION['user_id'] = $id;
+                header( "location: admin_home.php");
+                exit();
+            } else {
+                echo "<script type='text/javascript'>alert('Incorrect information!');</script>";
+            }
           }
       }
 
       $statement->close();
+}
 
-  }
+if (isset($_POST['login-mail']) && strlen($_POST['login-mail']) && isset($_POST['login-password']) && strlen($_POST['login-password'])) {
 
-    if( isset($_POST['login-mail']) && isset($_POST['login-password']) ) {
+  if ($statement = $connection->prepare("SELECT user_id FROM user WHERE email = ? and password = ?")) {
 
-        if( $statement = $connection->prepare( "SELECT email, password FROM user WHERE email = ? and password = ?")){
-          
-            $statement->bind_param( "ss", $_POST['login-mail'], $_POST['login-password']);
-            
-            
-            if( $statement->execute()){
-              
-                if( $statement->fetch()){
-                    $_SESSION['login-mail'] = $_POST['login-mail'];
-                    $_SESSION['login-password'] = $_POST['login-password'];
-                    
-                    header( "location: participant_home.php");
-                } else {
-                    echo "<script type='text/javascript'>alert('Incorrect information!');</script>";
-                }
-            }
-        }
+    $statement->bind_param("ss", $_POST['login-mail'], $_POST['login-password']);
 
-        $statement->close();
 
+    if ($statement->execute()) {
+      $statement->bind_result($id);
+
+      if ($statement->fetch()) {
+        $_SESSION['user_id'] = $id;
+        header("location: participant_home.php");
+        exit();
+      } else {
+        echo "<script type='text/javascript'>alert('Incorrect information!');</script>";
+      }
     }
+
+    $statement->close();
+  }
+}
+
 ?>

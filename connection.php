@@ -1,11 +1,3 @@
-<!--
-    Ece Kahraman
-    21801879
-    CS353-001
-    
-    PHP file to initialize database connection
- -->
-
 <?php 
     $SERVER = "dijkstra.ug.bcc.bilkent.edu.tr";
     $USER = "ece.kahraman";
