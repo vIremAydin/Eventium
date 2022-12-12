@@ -1,15 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="f7c6b7d0-7244-4ac1-8ebe-ae1d129aebbc" name="Changes" comment="admin-style.css adminHome.html added">
-      <change afterPath="$PROJECT_DIR$/html/event-detail.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/icons/icons8-back-arrow-32.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/icons/logout.png" afterDir="false" />
+    <list default="true" id="f7c6b7d0-7244-4ac1-8ebe-ae1d129aebbc" name="Changes" comment="style directory added">
+      <change afterPath="$PROJECT_DIR$/html/update-profile.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/html/organizerHome.html" beforeDir="false" afterPath="$PROJECT_DIR$/html/organizerHome.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/html/participant.css" beforeDir="false" afterPath="$PROJECT_DIR$/html/participant.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/html/participant.html" beforeDir="false" afterPath="$PROJECT_DIR$/html/participant.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/html/verifiedOrganizer.html" beforeDir="false" afterPath="$PROJECT_DIR$/html/verifiedOrganizer.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/style/participant.css" beforeDir="false" afterPath="$PROJECT_DIR$/style/participant.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -53,12 +48,16 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/icons" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
+    <property name="settings.editor.selected.configurable" value="project.scopes" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\virem\WebstormProjects\Eventium_1\icons" />
       <recent name="C:\Users\virem\WebstormProjects\Eventium_1\html" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\virem\WebstormProjects\Eventium_1\style" />
     </key>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
@@ -73,7 +72,8 @@
       <workItem from="1670439239511" duration="3651000" />
       <workItem from="1670529591555" duration="928000" />
       <workItem from="1670687682515" duration="2870000" />
-      <workItem from="1670765163486" duration="5563000" />
+      <workItem from="1670765163486" duration="6233000" />
+      <workItem from="1670881852012" duration="2119000" />
     </task>
     <task id="LOCAL-00001" summary="login added">
       <created>1670100154978</created>
@@ -145,7 +145,21 @@
       <option name="project" value="LOCAL" />
       <updated>1670774743446</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="event-detail.html added">
+      <created>1670780976137</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1670780976137</updated>
+    </task>
+    <task id="LOCAL-00012" summary="style directory added">
+      <created>1670781197885</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1670781197885</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -173,6 +187,8 @@
     <MESSAGE value="organizerHome.html added." />
     <MESSAGE value="verifiedOrganizer.html added" />
     <MESSAGE value="admin-style.css adminHome.html added" />
-    <option name="LAST_COMMIT_MESSAGE" value="admin-style.css adminHome.html added" />
+    <MESSAGE value="event-detail.html added" />
+    <MESSAGE value="style directory added" />
+    <option name="LAST_COMMIT_MESSAGE" value="style directory added" />
   </component>
 </project>

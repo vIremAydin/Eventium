@@ -94,3 +94,15 @@ span{
     font-weight: lighter;
     margin-left: 20px;
 }
+.disable{
+    background-color: #d26108;
+    text-align: center;
+    border-radius: 20px;
+    padding: 10px;
+}
+.bottom-line{
+    padding-bottom: 40px;
+    padding-top: 40px;
+    border-bottom: 1.5px solid gray;
+
+}
