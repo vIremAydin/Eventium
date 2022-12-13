@@ -10,7 +10,9 @@
 }
 
 .box-item{
-    margin-top: 10px;
+    margin-top: 10px;  display: flex;
+    justify-content: space-between;
+    text-align: left;
 }
 .container{
     margin: 30px;
@@ -21,6 +23,7 @@
     margin: 20px;
     font-weight: bold;
     color: orange;
+
 }
 .evt-btn-container{
     margin: auto;

@@ -1,11 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="f7c6b7d0-7244-4ac1-8ebe-ae1d129aebbc" name="Changes" comment="wallet.html updated">
-      <change afterPath="$PROJECT_DIR$/html/add-event.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/style/add-event.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-    </list>
+    <list default="true" id="f7c6b7d0-7244-4ac1-8ebe-ae1d129aebbc" name="Changes" comment="add-event.html" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -73,7 +69,7 @@
       <workItem from="1670529591555" duration="928000" />
       <workItem from="1670687682515" duration="2870000" />
       <workItem from="1670765163486" duration="6233000" />
-      <workItem from="1670881852012" duration="9190000" />
+      <workItem from="1670881852012" duration="9633000" />
     </task>
     <task id="LOCAL-00001" summary="login added">
       <created>1670100154978</created>
@@ -201,7 +197,14 @@
       <option name="project" value="LOCAL" />
       <updated>1670965805286</updated>
     </task>
-    <option name="localTasksCounter" value="19" />
+    <task id="LOCAL-00019" summary="add-event.html">
+      <created>1670967406195</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1670967406195</updated>
+    </task>
+    <option name="localTasksCounter" value="20" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -236,6 +239,7 @@
     <MESSAGE value="wallet.html finished" />
     <MESSAGE value="newcard added" />
     <MESSAGE value="wallet.html updated" />
-    <option name="LAST_COMMIT_MESSAGE" value="wallet.html updated" />
+    <MESSAGE value="add-event.html" />
+    <option name="LAST_COMMIT_MESSAGE" value="add-event.html" />
   </component>
 </project>
