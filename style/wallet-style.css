@@ -39,3 +39,17 @@
     margin: 50px;
 
 }
+.wallet-card{
+    background-color: lightgrey;
+    border-radius: 20px;
+    margin: auto;
+    width: 70%;
+    margin-top: 60px;
+    padding: 40px;
+}
+
+.btn-wallet{
+    margin: auto;
+    width: 10%;
+    margin-top: 30px;
+}
