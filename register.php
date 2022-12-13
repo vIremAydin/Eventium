@@ -17,7 +17,7 @@
     </div>
     <form method="post">
         <div class="container">
-        
+
             <div class="mb-3 row">
                 <div class="col-sm-6 align-self-center">
                     <label for="mail" class="col-sm-2 col-form-label">Email</label>
@@ -74,16 +74,16 @@
             <div class="mb-3 row">
                 <div class="col-sm-4 align-self-center">
                     <label for="postal-code" class="col-sm-4 col-form-label">Postal Code</label>
-                    <input type="number" class="form-control" name="postal-code" id="postal-code" placeholder="Postal Code" required="required">
+                    <input type="number" class="form-control" name="postal-code" id="postal-code" placeholder="Postal Code" required="required" min="01000" maxlength="5">
                 </div>
                 <div class="col-sm-4 align-self-center">
                     <label for="phone" class="col-sm-4 col-form-label">Phone</label>
-                    <input type="number" class="form-control" name="phone" id="phone" placeholder="Phone" required="required">
+                    <input type="number" class="form-control" name="phone" id="phone" placeholder="Phone" required="required" maxlength="11">
                 </div>
 
                 <div class="col-sm-4 align-self-center">
                     <label for="bdate" class="col-sm-4 col-form-label">Birth Date</label>
-                    <input  type="date" class="form-control" name="bdate" id="bdate" placeholder="Birth Date" required="required">
+                    <input  type="date" class="form-control" name="bdate" id="bdate" placeholder="Birth Date" required="required" min="1920-01-01" max="2020-01-01">
                 </div>
 
             </div>
@@ -100,34 +100,51 @@
 
 
 
-        
+
 </div>
+
+<script>
+  document.querySelectorAll('input[type="number"]').forEach(input => {
+    input.oninput = () =>{
+      if(input.value.length > input.maxLength) input.value = input.value.slice(0, input.maxLength);
+    }
+  });
+</script>
 
 </body>
 </html>
 
 <?php
-    require('connection.php');    
+    require('connection.php');
     session_start();
 
     if( isset($_POST['email']) && isset($_POST['password']) && isset($_POST['first-name']) && isset($_POST['last-name']) && isset($_POST['city']) && isset($_POST['province']) && isset($_POST['street']) && isset($_POST['postal-code']) && isset($_POST['phone']) && isset($_POST['bdate']) ) {
         if( $statement = $connection->prepare( "INSERT INTO user VALUES (NULL, ?, ?) ") ){
             $statement->bind_param( "ss", $_POST['password'], $_POST['email']);
-            
             if ($statement->execute()) {
-                
                 $mail = $_POST['email'];
                 $statement = $connection->query("SELECT user_id FROM user WHERE email = '$mail'");
                 $userID = ($statement->fetch_assoc())['user_id'];
                 if($statement = $connection->prepare( "INSERT INTO non_admin VALUES ('$userID', ?, ?, ?, ?, ?, ?, ?, ?, ?) " )){
-                    
-                    $statement->bind_param( "ssssssiss", $_POST['first-name'], $_POST['middle-name'], $_POST['last-name'], $_POST['street'], $_POST['province'], $_POST['city'], $_POST['postal-code'], $_POST['bdate'], $_POST['phone'] );
-                    
+                    $statement->bind_param( "ssssssiss", ucfirst(strtolower($_POST['first-name'])), ucfirst(strtolower($_POST['middle-name'])), ucfirst(strtolower($_POST['last-name'])), $_POST['street'], $_POST['province'], ucfirst(strtolower($_POST['city'])), $_POST['postal-code'], $_POST['bdate'], $_POST['phone'] );
                     if ($statement->execute()) {
-                        echo "<script type='text/javascript'>alert('You have now registered!');</script>";
+                        if($stmt = $connection->prepare( "INSERT INTO participant VALUES ('$userID', 0) " ) ){
+                          if ($stmt->execute()) {
+                            if($stmt2 = $connection->prepare( "INSERT INTO organizer VALUES ('$userID', 0) " ) ){
+                              if ($stmt2->execute()) {
+                                echo "<script type='text/javascript'>alert('Registration is successful!');</script>";
+                              }
+                            }
+                          }
+                        }
                         echo("<script>window.location = 'login.php';</script>");
                     } else {
-                        echo "<script type='text/javascript'>alert('second query did not execute!');</script>";
+                        echo "<script type='text/javascript'>alert('This phone number is in use!');</script>";
+                        if($stmt3 = $connection->prepare( "DELETE FROM user WHERE user_id = '$userID' " ) ){
+                          if ($stmt3->execute()) {
+                            echo "<script type='text/javascript'>alert('Siliniyor!');</script>";
+                          }
+                        }
                     }
                 }
 
@@ -135,9 +152,9 @@
                 echo "<script type='text/javascript'>alert('This email is already in use!');</script>";
             }
         }
-  
+
         $statement->close();
-  
+
     }
 
 ?>
