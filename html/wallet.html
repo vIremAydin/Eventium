@@ -9,6 +9,7 @@
             integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
             crossorigin="anonymous"></script>
     <link rel="stylesheet" href="../style/participant.css">
+    <link rel="stylesheet" href="../style/wallet-style.css">
 </head>
 <body>
 
@@ -38,7 +39,7 @@
 <div>
     <div class="row mx-4 my-4 justify-content-end">
         <div class="col-1">
-            <button id="btn1" type="button" class="btn org" > Tickets</button>
+            <button id="btn1" type="button" class="btn org"> Tickets</button>
         </div>
         <div class="col-1">
             <button id="btn2" type="button" class="btn org" disabled> Wallet</button>
@@ -47,5 +48,50 @@
 
 </div>
 
+<div class="row">
+    <div class="col-6 card-box">
+        <div class="name" style="text-align: center; font-size: 25px">Your Saved Cards</div>
+        <div class="card-container">
+            <div class="card">
+                <div class="card-item">123****</div>
+                <div class="card-item">Valid by: 12.12.2022</div>
+                <button class="btn btn-light">Edit</button>
+                <button class="btn btn-light">Remove</button>
+            </div>
+            <div class="card">
+                <div class="card-item">123****</div>
+                <div class="card-item">Valid by: 12.12.2022</div>
+                <button class="btn btn-light">Edit</button>
+                <button class="btn btn-light">Remove</button>
+            </div>
+        </div>
+        <div class=" btn-card">
+            <button class="btn org">Add a New Card</button>
+        </div>
+
+    </div>
+    <div class="col-6">
+        <div class="row box-out">
+            <div class="col-5">
+                <img class="image-wallet" src="../icons/wallet.png" alt="back"/>
+            </div>
+            <div class="col-7 card-box">
+                <div class="box-in">
+                    <div>Total Balance: 100$</div>
+                    <button class="btn btn-light">Increase Balance</button>
+                </div>
+                <div>Total Participation Points: 550</div>
+            </div>
+        </div>
+
+
+    </div>
+
+</div>
+
+<div class="go-back">
+    <img class="image-back" src="../icons/icons8-back-arrow-32.png" alt="back"/>
+    <span>Go back to the home</span>
+</div>
 </body>
 </html>

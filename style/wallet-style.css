@@ -1,0 +1,41 @@
+.card{
+    margin: 20px;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
+    background-color: lightgrey;
+    padding: 10px;
+}
+.card-container{
+    margin: 30px;
+    border: 1px solid gray;
+    border-radius: 20px;
+
+    display: flex;
+    flex-direction: column;
+}
+.card-box{
+    display: flex;
+    flex-direction: column;
+}
+
+.btn-card{
+    margin: auto;
+    width: 30%;
+}
+.image-wallet{
+    width: 200px;
+    height: 200px;
+}
+
+.box-in{
+    font-size: 20px;
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 20px;
+    margin-right: 20px;
+}
+.box-out{
+    margin: 50px;
+
+}
