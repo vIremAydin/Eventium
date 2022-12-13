@@ -1,0 +1,28 @@
+.box{
+    margin: auto;
+    width: 80%;
+    background-color: #ffc36c;
+    border-radius: 20px;
+    padding: 20px;
+    color: white;
+    display: flex;
+    flex-direction: column;
+}
+
+.box-item{
+    margin-top: 10px;
+}
+.container{
+    margin: 30px;
+}
+.title{
+    text-align: center;
+    font-size: 27px;
+    margin: 20px;
+    font-weight: bold;
+    color: orange;
+}
+.evt-btn-container{
+    margin: auto;
+    width: 10%;
+}
