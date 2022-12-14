@@ -1,0 +1,18 @@
+h2{
+    color: red;
+    text-align: center;
+    margin: 30px;
+}
+
+.p-container{
+    width: 80%;
+    margin: auto;
+}
+body{
+    background-color: rgba(248, 166, 166, 0.51);
+
+}
+.go-back{
+    margin: 50px;
+    cursor: pointer;
+}
