@@ -37,7 +37,7 @@ $connection->close();
     </div>
 
     <div class="col-2 mt-3">
-        Your Info
+        <a href="./update_profile.php">Your Info</a>
     </div>
 
     <div class="col-2 mt-2">
