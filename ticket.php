@@ -21,7 +21,7 @@ $connection->close();
     <title>Ticket</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
           integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-    <link rel="stylesheet" href="participant.css">
+    <link rel="stylesheet" href="style/participant.css">
 
 </head>
 <body>
@@ -31,7 +31,7 @@ $connection->close();
     </div>
 
     <div class="col-1 mt-3">
-        Your Info
+        <a href="./update_profile.php" style="color: whitesmoke; text-decoration: none;">Your Info</a>
     </div>
 
     <div class="col-2 mt-2">
@@ -45,7 +45,7 @@ $connection->close();
 
 <div class="row mx-4 my-4 justify-content-end">
     <div class="col-1">
-        <button id="btn2" type="button" class="btn org"> Wallet</button>
+        <button id="btn2" type="button" class="btn org" onclick="window.location.href='./wallet.php';"> Wallet</button>
     </div>
 </div>
 
