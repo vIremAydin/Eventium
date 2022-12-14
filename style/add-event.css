@@ -8,7 +8,15 @@
     display: flex;
     flex-direction: column;
 }
-
+.box-v{
+    margin: auto;
+    width: 80%;
+    background-color: pink;
+    border-radius: 20px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+}
 .box-item{
     margin-top: 10px;  display: flex;
     justify-content: space-between;
@@ -25,7 +33,19 @@
     color: orange;
 
 }
+
+.title-v{
+    text-align: center;
+    font-size: 27px;
+    margin: 20px;
+    font-weight: bold;
+    color: deeppink;
+
+}
 .evt-btn-container{
     margin: auto;
     width: 10%;
+}
+.pink{
+    background-color: deeppink;
 }
