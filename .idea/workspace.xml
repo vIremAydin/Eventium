@@ -1,11 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="f7c6b7d0-7244-4ac1-8ebe-ae1d129aebbc" name="Changes" comment="edit-event.html added">
-      <change afterPath="$PROJECT_DIR$/html/event-filter.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/style/participant.css" beforeDir="false" afterPath="$PROJECT_DIR$/style/participant.css" afterDir="false" />
-    </list>
+    <list default="true" id="f7c6b7d0-7244-4ac1-8ebe-ae1d129aebbc" name="Changes" comment="event-filter.html added" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -73,7 +69,7 @@
       <workItem from="1670529591555" duration="928000" />
       <workItem from="1670687682515" duration="2870000" />
       <workItem from="1670765163486" duration="6233000" />
-      <workItem from="1670881852012" duration="13386000" />
+      <workItem from="1670881852012" duration="13694000" />
     </task>
     <task id="LOCAL-00001" summary="login added">
       <created>1670100154978</created>
@@ -229,7 +225,14 @@
       <option name="project" value="LOCAL" />
       <updated>1671016784337</updated>
     </task>
-    <option name="localTasksCounter" value="23" />
+    <task id="LOCAL-00023" summary="event-filter.html added">
+      <created>1671018721753</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1671018721753</updated>
+    </task>
+    <option name="localTasksCounter" value="24" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -266,6 +269,7 @@
     <MESSAGE value="add-event.html" />
     <MESSAGE value="verifiedOrganizer.html added" />
     <MESSAGE value="edit-event.html added" />
-    <option name="LAST_COMMIT_MESSAGE" value="edit-event.html added" />
+    <MESSAGE value="event-filter.html added" />
+    <option name="LAST_COMMIT_MESSAGE" value="event-filter.html added" />
   </component>
 </project>
