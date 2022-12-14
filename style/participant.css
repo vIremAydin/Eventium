@@ -19,6 +19,24 @@
     margin-left: 130px;
 
 }
+
+.filter-box{
+    width: 90%;
+    margin: auto;
+    display: flex;
+    justify-content: space-between;
+}
+
+
+.filter-display{
+    width: 70%;
+    margin:auto;
+    background-color: lightgrey;
+    border-radius: 20px;
+    padding: 20px;
+    margin-top: 20px;
+}
+
 .box{
 background-color: lightgrey;
     text-align: center;
