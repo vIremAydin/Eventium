@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Add Event</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+  <link rel="stylesheet" href="../style/participant.css">
+  <link rel="stylesheet" href="../style/add-event.css">
+
+</head>
+<body>
+<div class="container">
+  <div class="title">Editing Event: Recital</div>
+  <div class="box">
+    <div class="box-item">
+      <label for="title" class="col-sm-4 col-form-label">Title</label>
+      <input  type="text" class="form-control" id="title" placeholder="Title">
+    </div>
+    <div class="box-item">
+      <label class="col-sm-4 col-form-label" for="floatingTextarea2">Details</label>
+      <textarea class="form-control" placeholder="Please explain details of the event..." id="floatingTextarea2" style="height: 100px"></textarea>
+    </div>
+    <div class="box-item">
+      <label for="Location" class="col-sm-4 col-form-label">Location</label>
+      <input  type="text" class="form-control" id="Location" placeholder="Location">
+    </div>
+
+    <div class="box-item">
+      <label for="Date" class="col-sm-4 col-form-label">Date</label>
+      <input  type="date" class="form-control" id="Date" placeholder="Date">
+    </div>
+
+    <div class="box-item">
+      <label class="col-sm-4 col-form-label" for="floatingSelect">Choose A Category</label>
+
+      <select class="form-select" id="floatingSelect" aria-label="Floating label select example">
+        <option selected>Music</option>
+        <option value="1">Gathering</option>
+        <option value="2">Sports</option>
+        <option value="3">Business</option>
+        <option value="4">Food&Drink</option>
+        <option value="4">Visual Arts</option>
+      </select>
+    </div>
+
+    <div class="box-item">
+      <label for="Quota" class="col-sm-4 col-form-label">Enter A Quota</label>
+      <input  type="number" class="form-control" id="Quota" placeholder="Quota">
+    </div>
+
+    <div class="box-item">
+      <label class="col-sm-4 col-form-label" for="floatingSelect1">Choose An Age Restriction</label>
+
+      <select class="form-select" id="floatingSelect1" aria-label="Floating label select example">
+        <option selected>None</option>
+        <option value="1">+7</option>
+        <option value="2">+18</option>
+      </select>
+    </div>
+  </div>
+</div>
+<div class="evt-btn-container">
+  <button class="btn org">Update</button>
+</div>
+
+
+
+<div class="go-back">
+  <img class="image-back" src="../icons/icons8-back-arrow-32.png" alt="back"/>
+  <span>Go back to home</span>
+</div>
+
+</body>
+</html>
