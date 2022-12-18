@@ -1,10 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="f7c6b7d0-7244-4ac1-8ebe-ae1d129aebbc" name="Changes" comment="verifiedOrganizer.html added">
-      <change afterPath="$PROJECT_DIR$/html/admin-review-users.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/style/admin-style.css" beforeDir="false" afterPath="$PROJECT_DIR$/style/admin-style.css" afterDir="false" />
+    <list default="true" id="f7c6b7d0-7244-4ac1-8ebe-ae1d129aebbc" name="Changes" comment="admin-review-users.html added">
+      <change beforePath="$PROJECT_DIR$/html/admin-review-users.html" beforeDir="false" afterPath="$PROJECT_DIR$/html/admin-review-users.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -74,7 +72,7 @@
       <workItem from="1670687682515" duration="2870000" />
       <workItem from="1670765163486" duration="6233000" />
       <workItem from="1670881852012" duration="21026000" />
-      <workItem from="1671397076236" duration="3000000" />
+      <workItem from="1671397076236" duration="3647000" />
     </task>
     <task id="LOCAL-00001" summary="login added">
       <created>1670100154978</created>
@@ -265,7 +263,14 @@
       <option name="project" value="LOCAL" />
       <updated>1671398470888</updated>
     </task>
-    <option name="localTasksCounter" value="28" />
+    <task id="LOCAL-00028" summary="admin-review-users.html added">
+      <created>1671400134714</created>
+      <option name="number" value="00028" />
+      <option name="presentableId" value="LOCAL-00028" />
+      <option name="project" value="LOCAL" />
+      <updated>1671400134714</updated>
+    </task>
+    <option name="localTasksCounter" value="29" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -305,6 +310,7 @@
     <MESSAGE value="view-participants.html&#10;view-participant-style.css" />
     <MESSAGE value="view-participants.html&#10;update" />
     <MESSAGE value="verifiedOrganizer.html added" />
-    <option name="LAST_COMMIT_MESSAGE" value="verifiedOrganizer.html added" />
+    <MESSAGE value="admin-review-users.html added" />
+    <option name="LAST_COMMIT_MESSAGE" value="admin-review-users.html added" />
   </component>
 </project>
