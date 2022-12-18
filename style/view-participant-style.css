@@ -7,9 +7,12 @@ h2{
 .p-container{
     width: 80%;
     margin: auto;
+    background-color: rgba(248, 198, 198, 0.25);
+    padding: 40px;
+    border-radius: 20px;
+
 }
 body{
-    background-color: rgba(248, 166, 166, 0.51);
 
 }
 .go-back{
