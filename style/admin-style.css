@@ -33,3 +33,19 @@ h3{
     text-align: center;
     margin: 50px;
 }
+.v-container{
+    display: flex;
+    flex-direction: column;
+    width: 60%;
+    margin: auto;
+}
+
+.item{
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.go-back{
+    display: flex;
+    margin: 20px;
+}
