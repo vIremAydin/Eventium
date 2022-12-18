@@ -49,3 +49,21 @@ h3{
     display: flex;
     margin: 20px;
 }
+
+.review-container{
+    display: flex;
+    flex-direction: column;
+    width: 60%;
+    margin: auto;
+
+    background-color: wheat;
+    border-radius: 20px;
+}
+
+.review-item{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin: 20px;
+    font-size: 20px;
+}
