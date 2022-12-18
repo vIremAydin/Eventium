@@ -23,7 +23,7 @@ $connection->close();
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
             integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
             crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="participant.css">
+    <link rel="stylesheet" href="style/participant.css">
 </head>
 <body>
 
@@ -37,7 +37,7 @@ $connection->close();
     </div>
 
     <div class="col-2 mt-3">
-        Your Info
+        <a href="./update_profile.php" style="color: whitesmoke; text-decoration: none;">Your Info</a>
     </div>
 
     <div class="col-2 mt-2">
@@ -55,7 +55,7 @@ $connection->close();
             <button id="btn1" type="button" class="btn org" onclick="window.location.href='./ticket.php';"> Tickets</button>
         </div>
         <div class="col-1">
-            <button id="btn2" type="button" class="btn org"> Wallet</button>
+            <button id="btn2" type="button" class="btn org" onclick="window.location.href='./wallet.php';"> Wallet</button>
         </div>
     </div>
     <div class="search-box">

@@ -142,7 +142,7 @@
                         echo "<script type='text/javascript'>alert('This phone number is in use!');</script>";
                         if($stmt3 = $connection->prepare( "DELETE FROM user WHERE user_id = '$userID' " ) ){
                           if ($stmt3->execute()) {
-                            echo "<script type='text/javascript'>alert('Siliniyor!');</script>";
+                            echo "<script type='text/javascript'>alert('Deleting!');</script>";
                           }
                         }
                     }
