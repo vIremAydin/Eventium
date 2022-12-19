@@ -6,7 +6,7 @@ $sql1 = "SELECT first_name, organizer_popularity FROM non_admin NATURAL JOIN org
 $query1 = $connection->query($sql1);
 $result1 = $query1->fetch_assoc();
 
-$sql2 = "SELECT event_title, event_date, event_location, event_quota
+$sql2 = "SELECT event_title, event_date, event_location, event_quota, event_id
          FROM event E
          WHERE E.user_id = '$id' and E.event_date > CURRENT_TIMESTAMP";
 
@@ -68,9 +68,9 @@ $query2 = $connection->query($sql2);
                 <td><?php echo $result2['event_location'];?></td>
                 <td><?php echo $result2['event_quota'];?></td>
                 <td>
-                    <button class="edit" onclick="window.location.href='./edit_event.php';">edit</button>
+                    <button class="edit" onclick="window.location.href='./edit_event.php?id=<?php echo $result2['event_id'];?>';">edit</button>
                     <button class="view" onclick="window.location.href='./view_participants.php';">view participants</button>
-                    <button class="cancel" onclick="window.location.href='./cancel_event.php';">cancel</button>
+                    <button class="cancel" onclick="window.location.href='./cancel_event.php?id=<?php echo $result2['event_id'];?>&user=2';">cancel</button>
                 </td>
             </tr>
                 

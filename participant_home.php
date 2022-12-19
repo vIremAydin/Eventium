@@ -61,7 +61,7 @@ $connection->close();
     <div class="search-box">
         <form class="d-flex">
             <input class="form-control me-2" type="search" placeholder="Search an event" aria-label="Search an event">
-            <button class="btn btn-outline-dark" type="submit">Search</button>
+            <button class="btn btn-outline-dark" type="button" onclick="window.location.href='./event_filter.php';">Search</button>
         </form>
     </div>
 
@@ -79,8 +79,8 @@ $connection->close();
        <div class="name"><?php echo $result2['event_title']; ?></div>
        <div ><?php echo $result2['event_description']; ?></div>
        <div >
-       <button class="cancel" style="background-color: #198754;" onclick="window.location.href='./joined_event_detail.php?data=<?php echo $result2['event_id'];?>';">details</button>
-        <button class="cancel" onclick="window.location.href='./cancel.php?data=<?php echo $result2['event_id'];?>';">cancel</button>
+       <button class="cancel" style="background-color: #198754;" onclick="window.location.href='./event_detail.php?id=<?php echo $result2['event_id'];?>&page=1';">details</button>
+        <button class="cancel" onclick="window.location.href='./cancel_event.php?id=<?php echo $result2['event_id'];?>&user=1';">cancel</button>
        </div>
        </li>
        <?php $count = $count + 1; }
