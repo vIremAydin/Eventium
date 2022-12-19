@@ -2,26 +2,20 @@
     session_start();
     require('connection.php');
 
-    $eventID = $_GET['data'];
+    $fromPage = $_GET['page'];
+    $eventID = $_GET['id'];
     $userID = $_SESSION['user_id'];
 
     $sql1 = "SELECT first_name, participation_points FROM non_admin NATURAL JOIN participant WHERE user_id = '$userID'";
     $query1 = $connection->query($sql1);
     $result1 = $query1->fetch_assoc();
     
-    $sql2 = " SELECT event_location, event_date, event_category, event_title, event_description, event_quota, age_restriction, first_name, middle_name, last_name
-              FROM event E NATURAL JOIN non_admin N
-              WHERE E.event_id = '$eventID'";
+
+    $sql2 = "SELECT E.event_id, E.event_date, E.event_title, E.event_description, E.age_restriction, E.event_location, N.first_name, N.middle_name, N.last_name, V.organization_name, E.event_category, E.event_quota
+             FROM event E NATURAL JOIN non_admin N NATURAL LEFT OUTER JOIN verified_organizer V
+             WHERE E.event_id = '$eventID'";
     $query2 = $connection->query($sql2);
     $result2 = $query2->fetch_assoc();
-
-    $sql3 = " SELECT COUNT(user_id) AS num_of_participants
-              FROM joins J
-              WHERE J.event_id = '$eventID'";
-    $query3 = $connection->query($sql3);
-    $result3 = $query3->fetch_assoc();
-
-    $remaining_quota = (int)$result2['event_quota'] - (int)$result3['num_of_participants'];
 
     $organizer_name = $result2['first_name'];
     if ($result2['middle_name'] == null) {
@@ -29,6 +23,10 @@
     } else {
         $organizer_name .= " ".$result2['middle_name']." ".$result2['last_name'];
     }
+
+    $sql3 = "SELECT user_id, event_id FROM joins WHERE user_id = '$userID' AND event_id = '$eventID'";
+    $query3 = $connection->query($sql3);
+    $result3 = $query3->fetch_assoc();
 
     $connection->close();   
 ?>
@@ -72,26 +70,36 @@
     <div style="display: flex; justify-content: space-around; margin: 20px">
         <div class="date">Location: <?php echo $result2['event_location']; ?></div>
         <div class="date">Date: <?php echo $result2['event_date']; ?></div>
-        <div class="date">Remaining Quota: <?php echo (int) $remaining_quota; ?></div>
-
+        <div class="date">Remaining Quota: <?php echo $result2['event_quota']; ?></div>
     </div>
     <?php if ($result2['age_restriction'] == null) {
                 ?> <div style="margin: 10px; font-size: 20px">No age restriction!</div> <?php
     } else { ?>
         <div style="margin: 10px; font-size: 20px">Any one younger than <?php echo $result2['age_restriction']; ?> is not accepted to this event!</div>
     <?php } ?>
-    
-
 </div>
-<div class="btn-container" style="justify-content: center; text-align: center;">
+<div class="btn-container">
+<?php if( isset($result3['user_id']) && isset($result3['event_id']) ){ ?>
     <div class="btn" style="background-color: gray; border-width: 0; color: whitesmoke">Joined</div>
+<?php } else if ( isset($result2['organization_name'])  ){ ?>
+    <button type="button" class="btn btn-success" style="margin-left: 70px" onclick="window.location.href='./purchase_ticket.php?data=<?php echo $result2['event_id']; ?>';">Purchase!</button>
+<?php } else { ?>
+    <button type="button" class="btn btn-success" style="margin-left: 70px" onclick="window.location.href='./join_event.php?data=<?php echo $result2['event_id']; ?>';">Join!</button>
+<?php } ?>
 </div>
 
 <div class="go-back">
-    <button style="background-color: transparent; border-width: 0;" onclick="window.location.href='./participant_home.php';">
-        <img class="image-back" src="icons/icons8-back-arrow-32.png" alt="back"/>
-        <span>Go back to the home page</span>
-    </button>
+    <?php if($fromPage == 1) { ?>
+        <button style="background-color: transparent; border-width: 0;" onclick="window.location.href='./participant_home.php';">
+            <img class="image-back" src="icons/icons8-back-arrow-32.png" alt="back"/>
+            <span>Go back to the home page</span>
+        </button>
+    <?php } else if ($fromPage == 2) { ?>
+        <button style="background-color: transparent; border-width: 0;" onclick="window.location.href='./event_filter.php';">
+            <img class="image-back" src="icons/icons8-back-arrow-32.png" alt="back"/>
+            <span>Go back to the list</span>
+        </button>
+    <?php } ?>
 </div>
 
 </body>
