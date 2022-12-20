@@ -59,30 +59,48 @@
                 <option value="2">+18</option>
             </select>
         </div>
+<script>
 
+    let index = 0;
+function add() {
+index++;
+
+    document.getElementById("all-ticket").innerHTML+= "            <div id='"+index+"' class=\"box-item\">\n" +
+        "                <label class=\"col-sm-4 col-form-label\" for=\"ticket1\">" + "Ticket Category " + index + "</label>\n" +
+        "                <input type=\"number\" class=\"form-control\" id=\"ticket1\" placeholder=\" Enter Price\">\n" +
+        "            </div>";
+}
+Element.prototype.remove = function() {
+    this.parentElement.removeChild(this);
+}
+NodeList.prototype.remove = HTMLCollection.prototype.remove = function() {
+    for(var i = 0; i < this.length; i--) {
+        if(this[i] && this[i].parentElement) {
+            this[i].parentElement.removeChild(this[i]);
+        }
+    }
+}
+function deleteLast() {
+
+    document.getElementById(index).remove();
+    index--;
+}
+
+function deleteAll() {
+    document.getElementById("all-ticket").innerHTML = "<div>Enter ticket prices for categories:</div>\n";
+index = 0;
+}
+
+</script>
         <div class="box-item">
             <label class="col-sm-4 col-form-label">Add Ticket Category</label>
-            <button class="btn btn-light" style="margin-left: 10px;">Add Category</button>
-            <button class="btn cancel" style="margin-left: 10px;">Delete Last</button>
-            <button class="btn cancel" style="margin-left: 10px;">Delete All</button>
+            <button class="btn btn-light" onclick="add()" style="margin-left: 10px;">Add Category</button>
+            <button class="btn cancel" onclick="deleteLast()" style="margin-left: 10px;">Delete Last</button>
+            <button class="btn cancel" onclick="deleteAll()" style="margin-left: 10px;">Delete All</button>
         </div>
 
-        <div class="box-v" >
-            Enter ticket prices for categories:
-            <div class="box-item">
-                <label class="col-sm-4 col-form-label" for="ticket1">Ticket Category 1</label>
-                <input type="number" class="form-control" id="ticket1" placeholder=" Enter Price">
-            </div>
-
-            <div class="box-item">
-                <label class="col-sm-4 col-form-label" for="ticket2">Ticket Category 2</label>
-                <input type="number" class="form-control" id="ticket2" placeholder=" Enter Price">
-            </div>
-
-            <div class="box-item">
-                <label class="col-sm-4 col-form-label" for="ticket3">Ticket Category 3</label>
-                <input type="number" class="form-control" id="ticket3" placeholder=" Enter Price">
-            </div>
+        <div class="box-v" id="all-ticket">
+            <div>Enter ticket prices for categories:</div>
         </div>
 
 
