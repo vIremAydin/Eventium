@@ -54,8 +54,8 @@ $query2 = $connection->query($sql2);
         <tr>
             <th scope="col">Title</th>
             <th scope="col">Date</th>
-            <th scope="col">Location</th>
-            <th scope="col">Participants</th>
+            <th scope="col" style="text-align: center;">Location</th>
+            <th scope="col" style="text-align: center;">Remaining Quota</th>
             <th scope="col"> </th>
         </tr>
         </thead>
@@ -65,12 +65,12 @@ $query2 = $connection->query($sql2);
             <tr>
                 <th scope="row"><?php echo $result2['event_title'];?></th>
                 <td><?php echo $result2['event_date'];?></td>
-                <td><?php echo $result2['event_location'];?></td>
-                <td><?php echo $result2['event_quota'];?></td>
+                <td style="text-align: center;"><?php echo $result2['event_location'];?></td>
+                <td style="text-align: center;"><?php echo $result2['event_quota'];?></td>
                 <td>
                     <button class="edit" onclick="window.location.href='./edit_event.php?id=<?php echo $result2['event_id'];?>';">edit</button>
-                    <button class="view" onclick="window.location.href='./view_participants.php';">view participants</button>
-                    <button class="cancel" onclick="window.location.href='./cancel_event.php?id=<?php echo $result2['event_id'];?>&user=2';">cancel</button>
+                    <button class="view" onclick="window.location.href='./view_participants.php?id=<?php echo $result2['event_id'];?>&user=2';">view participants</button>
+                    <button class="cancel" onclick="window.location.href='./cancel_event.php?id=<?php echo $result2['event_id'];?>&user=2&ad=0';">cancel</button>
                 </td>
             </tr>
                 

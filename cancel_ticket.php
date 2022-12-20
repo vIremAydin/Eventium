@@ -9,7 +9,7 @@
     if($connection->query($sql1) && $connection->query($sql2)) {
         header("Location: ticket.php");
     } else {
-        echo "<script type='text/javascript'>alert('Participation of . $ticketID . can not be cancelled!');</script>";
+        echo "<script type='text/javascript'>alert('Participation of the ticket . $ticketID . can not be cancelled!');</script>";
         echo("<script>window.location = 'participant_home.php';</script>");
     }
     $connection->close();   

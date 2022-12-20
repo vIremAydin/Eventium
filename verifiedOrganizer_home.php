@@ -6,7 +6,7 @@ $sql1 = "SELECT organization_name, organizer_popularity FROM organizer NATURAL J
 $query1 = $connection->query($sql1);
 $result1 = $query1->fetch_assoc();
 
-$sql2 = "SELECT event_title, event_date, event_location, event_quota
+$sql2 = "SELECT event_title, event_date, event_location, event_quota, event_id
          FROM event E
          WHERE E.user_id = '$id' and E.event_date > CURRENT_TIMESTAMP";
 
@@ -51,8 +51,8 @@ $query2 = $connection->query($sql2);
         <tr>
             <th scope="col">Title</th>
             <th scope="col">Date</th>
-            <th scope="col">Location</th>
-            <th scope="col">Participants</th>
+            <th scope="col" style="text-align: center;">Location</th>
+            <th scope="col" style="text-align: center;">Remaining Quota</th>
             <th scope="col"> </th>
         </tr>
         </thead>
@@ -62,12 +62,12 @@ $query2 = $connection->query($sql2);
             <tr>
                 <th scope="row"><?php echo $result2['event_title'];?></th>
                 <td><?php echo $result2['event_date'];?></td>
-                <td><?php echo $result2['event_location'];?></td>
-                <td><?php echo $result2['event_quota'];?></td>
+                <td style="text-align: center;"><?php echo $result2['event_location'];?></td>
+                <td style="text-align: center;"><?php echo $result2['event_quota'];?></td>
                 <td>
                     <button class="edit" onclick="window.location.href='./edit_event_v.php';">edit</button>
-                    <button class="view" onclick="window.location.href='./view_participants_v.php';">view participants</button>
-                    <button class="cancel" onclick="window.location.href='./cancel_v.php';">cancel</button>
+                    <button class="view" onclick="window.location.href='./view_participants.php?id=<?php echo $result2['event_id'];?>&user=3';">view participants</button>
+                    <button class="cancel" onclick="window.location.href='./cancel_event.php?id=<?php echo $result2['event_id'];?>&user=3&ad=0';">cancel</button>
                 </td>
             </tr>
                 
