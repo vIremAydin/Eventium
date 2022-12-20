@@ -80,7 +80,7 @@ $connection->close();
        <div ><?php echo $result2['event_description']; ?></div>
        <div >
        <button class="cancel" style="background-color: #198754;" onclick="window.location.href='./event_detail.php?id=<?php echo $result2['event_id'];?>&page=1';">details</button>
-        <button class="cancel" onclick="window.location.href='./cancel_event.php?id=<?php echo $result2['event_id'];?>&user=1';">cancel</button>
+        <button class="cancel" onclick="window.location.href='./cancel_event.php?id=<?php echo $result2['event_id'];?>&user=1&ad=0';">cancel</button>
        </div>
        </li>
        <?php $count = $count + 1; }

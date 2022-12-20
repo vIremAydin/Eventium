@@ -125,7 +125,7 @@
                 $mail = $_POST['email'];
                 $statement = $connection->query("SELECT user_id FROM user WHERE email = '$mail'");
                 $userID = ($statement->fetch_assoc())['user_id'];
-                if($statement = $connection->prepare( "INSERT INTO non_admin VALUES ('$userID', ?, ?, ?, ?, ?, ?, ?, ?, ?) " )){
+                if($statement = $connection->prepare( "INSERT INTO non_admin VALUES ('$userID', ?, ?, ?, ?, ?, ?, ?, ?, ?, 0) " )){
                     $statement->bind_param( "ssssssiss", ucfirst(strtolower($_POST['first-name'])), ucfirst(strtolower($_POST['middle-name'])), ucfirst(strtolower($_POST['last-name'])), $_POST['street'], $_POST['province'], ucfirst(strtolower($_POST['city'])), $_POST['postal-code'], $_POST['bdate'], $_POST['phone'] );
                     if ($statement->execute()) {
                         if($stmt = $connection->prepare( "INSERT INTO participant VALUES ('$userID', 0) " ) ){

@@ -52,18 +52,23 @@
 
     if (isset($_POST['login-mail']) && strlen($_POST['login-mail']) && isset($_POST['login-password']) && strlen($_POST['login-password'])) {
 
-      if ($statement = $connection->prepare("SELECT user_id FROM verified_organizer NATURAL JOIN user WHERE email = ? and password = ?")) {
+      if ($statement = $connection->prepare("SELECT user_id, is_banned FROM verified_organizer NATURAL JOIN user NATURAL JOIN non_admin WHERE email = ? and password = ?")) {
     
         $statement->bind_param("ss", $_POST['login-mail'], $_POST['login-password']);
     
     
         if ($statement->execute()) {
-          $statement->bind_result($id);
+          $statement->bind_result($id, $ban);
     
           if ($statement->fetch()) {
-            $_SESSION['user_id'] = $id;
-            header("location: verifiedOrganizer_home.php");
-            exit();
+            if ($ban == 0) {
+              $_SESSION['user_id'] = $id;
+              header("location: verifiedOrganizer_home.php");
+              exit();
+            } else {
+              echo "<script type='text/javascript'>alert('You are banned from using this application!');</script>";
+            }
+            
           } else {
             echo "<script type='text/javascript'>alert('Incorrect information!');</script>";
           }
@@ -96,18 +101,22 @@
 
 if (isset($_POST['login-mail']) && strlen($_POST['login-mail']) && isset($_POST['login-password']) && strlen($_POST['login-password'])) {
 
-  if ($statement = $connection->prepare("SELECT user_id FROM user WHERE email = ? and password = ?")) {
+  if ($statement = $connection->prepare("SELECT user_id, is_banned FROM user NATURAL JOIN non_admin WHERE email = ? and password = ?")) {
 
     $statement->bind_param("ss", $_POST['login-mail'], $_POST['login-password']);
 
 
     if ($statement->execute()) {
-      $statement->bind_result($id);
+      $statement->bind_result($id, $ban);
 
       if ($statement->fetch()) {
-        $_SESSION['user_id'] = $id;
-        header("location: participant_home.php");
-        exit();
+        if ($ban == 0) {
+          $_SESSION['user_id'] = $id;
+          header("location: participant_home.php");
+          exit();
+        } else {
+          echo "<script type='text/javascript'>alert('You are banned from using this application!');</script>";
+        }
       } else {
         echo "<script type='text/javascript'>alert('Incorrect information!');</script>";
       }

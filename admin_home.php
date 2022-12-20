@@ -14,16 +14,16 @@
 
     <div class="block">
         <div class="label">Approve Verifications</div>
-        <button id="org-btn" type="button" class="btn org">Go</button>
+        <button id="org-btn" type="button" class="btn org" onclick="window.location.href='./admin_approve_verifications.php';">Go</button>
     </div>
     <div class="block">
         <div class="label">Review Users</div>
-        <button id="org-btn1" type="button" class="btn org">Go</button>
+        <button id="org-btn1" type="button" class="btn org" onclick="window.location.href='./admin_review_users.php';">Go</button>
     </div>
 
     <div class="block">
         <div class="label">Review Events</div>
-        <button id="org-btn2" type="button" class="btn org">Go</button>
+        <button id="org-btn2" type="button" class="btn org" onclick="window.location.href='./admin_review_events.php';">Go</button>
     </div>
     <div class="block">
         <div class="label">Create Report</div>
