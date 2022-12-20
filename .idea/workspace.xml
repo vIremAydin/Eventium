@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="f7c6b7d0-7244-4ac1-8ebe-ae1d129aebbc" name="Changes" comment="admin-review-users.html added">
-      <change beforePath="$PROJECT_DIR$/html/admin-review-users.html" beforeDir="false" afterPath="$PROJECT_DIR$/html/admin-review-users.html" afterDir="false" />
+    <list default="true" id="f7c6b7d0-7244-4ac1-8ebe-ae1d129aebbc" name="Changes" comment="iban popout">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/html/verified-add-event.html" beforeDir="false" afterPath="$PROJECT_DIR$/html/verified-add-event.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -72,7 +73,8 @@
       <workItem from="1670687682515" duration="2870000" />
       <workItem from="1670765163486" duration="6233000" />
       <workItem from="1670881852012" duration="21026000" />
-      <workItem from="1671397076236" duration="3647000" />
+      <workItem from="1671397076236" duration="4584000" />
+      <workItem from="1671479677717" duration="1454000" />
     </task>
     <task id="LOCAL-00001" summary="login added">
       <created>1670100154978</created>
@@ -270,7 +272,21 @@
       <option name="project" value="LOCAL" />
       <updated>1671400134714</updated>
     </task>
-    <option name="localTasksCounter" value="29" />
+    <task id="LOCAL-00029" summary="admin-review-users.html added">
+      <created>1671401051648</created>
+      <option name="number" value="00029" />
+      <option name="presentableId" value="LOCAL-00029" />
+      <option name="project" value="LOCAL" />
+      <updated>1671401051648</updated>
+    </task>
+    <task id="LOCAL-00030" summary="iban popout">
+      <created>1671480176726</created>
+      <option name="number" value="00030" />
+      <option name="presentableId" value="LOCAL-00030" />
+      <option name="project" value="LOCAL" />
+      <updated>1671480176726</updated>
+    </task>
+    <option name="localTasksCounter" value="31" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -311,6 +327,7 @@
     <MESSAGE value="view-participants.html&#10;update" />
     <MESSAGE value="verifiedOrganizer.html added" />
     <MESSAGE value="admin-review-users.html added" />
-    <option name="LAST_COMMIT_MESSAGE" value="admin-review-users.html added" />
+    <MESSAGE value="iban popout" />
+    <option name="LAST_COMMIT_MESSAGE" value="iban popout" />
   </component>
 </project>
