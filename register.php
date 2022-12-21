@@ -9,7 +9,7 @@
 
     <title>Register Page</title>
 </head>
-<body>
+<body style="background-size: cover;background-image: url('icons/messi.jpg'); color: aliceblue">
 
 <div>
     <div class="mx-auto" style="width: 500px; color:red">
