@@ -29,6 +29,11 @@
         <div class="label">Create Report</div>
         <button id="org-btn3" type="button" class="btn org">Go</button>
     </div>
+    <div class="block">
+        <button style="background-color: transparent; border-width: 0;" onclick="window.location.href='./logout.php';">
+            <div class="label">Logout   <img class="image-back" src="icons/logout.png" alt="back"/></div>
+        </button>
+    </div>
 
     <div style="margin: auto">
         <button id="org-btn4" type="button" class="btn org">Your Profile</button>

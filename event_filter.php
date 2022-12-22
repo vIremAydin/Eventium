@@ -2,17 +2,19 @@
 require('connection.php');    
 session_start();
 $id = $_SESSION['user_id'];
-$sql1 = "SELECT first_name, participation_points, city FROM non_admin NATURAL JOIN participant WHERE user_id = '$id'";
+$sql1 = "SELECT first_name, participation_points, city, YEAR(date_of_birth) as age_year FROM non_admin NATURAL JOIN participant WHERE user_id = '$id'";
 $query1 = $connection->query($sql1);
 $result1 = $query1->fetch_assoc();
 
-//$sql2 = "SELECT E.event_date, E.event_title, N.first_name, N.last_name, E.event_category 
-//        FROM event E NATURAL JOIN non_admin N
-//        WHERE E.event_date > CURRENT_TIMESTAMP AND event_location in (SELECT NA.city FROM non_admin NA WHERE NA.user_id = 3 AND 20 >= E.age_restriction)";
+$age = (int) date("Y") - (int)$result1['age_year'];
 
-$sql2 = "SELECT E.event_id, E.event_date, E.event_title, N.first_name, N.last_name, V.organization_name, E.event_category 
+if ($_POST['sql'] == null) {
+  $sql2 = "SELECT E.event_id, E.event_date, E.event_title, N.first_name, N.last_name, V.organization_name, E.event_category 
         FROM event E NATURAL JOIN non_admin N NATURAL LEFT OUTER JOIN verified_organizer V
-        WHERE E.event_date > CURRENT_TIMESTAMP AND event_location in (SELECT NA.city FROM non_admin NA WHERE NA.user_id = '$id' AND (70 > E.age_restriction OR E.age_restriction IS NULL))";
+        WHERE E.event_date > CURRENT_TIMESTAMP AND event_location in (SELECT NA.city FROM non_admin NA WHERE NA.user_id = '$id' AND ('$age' >= E.age_restriction OR E.age_restriction IS NULL))";
+} else {
+  $sql2 = $_POST['sql'];
+}
 
 $query2 = $connection->query($sql2);
 
@@ -66,33 +68,35 @@ $connection->close();
   </div>
   <h3 class="search-box" style="margin-bottom: 20px;">Events in <?php echo $result1['city']; ?></h3>
 
-  <div>
-    <form class="d-flex filter-box">
-      <label for="search">Filters:  </label>
-      <input id="search" type="date" placeholder="Filter by Date">
-      <input id="search1" class="" type="text" placeholder="Filter by Title" aria-label="Search an event">
-      <input id="search2" class="me-2" type="text" placeholder="Filter by Organizer" aria-label="Search an event">
+  <form method="post" action="./filtering.php?age=<?php echo $age; ?>">
+    <div class="d-flex filter-box">
+      <label for="min_date">Closest Date:  </label>
+      <input id="min_date" name="min_date" type="date" placeholder="Closest Date">
+      <label for="max_date">Farthest Date:  </label>
+      <input id="max_date" name="max_date" type="date" placeholder="Farthest Date">
+      <input id="filter_title" name="filter_title" class="" type="text" placeholder="Filter by Title" aria-label="Search an event">
+      <input id="filter_org" name="filter_org" class="me-2" type="txt" placeholder="Filter by Organizer" aria-label="Search an event">
       <div>
-        <select class="form-select" id="floatingSelect" aria-label="Floating label select example">
-          <option selected>Choose a Category</option>
-          <option value="0">Music</option>
-          <option value="1">Gathering</option>
-          <option value="2">Sports</option>
-          <option value="3">Business</option>
-          <option value="4">Food&Drink</option>
-          <option value="4">Visual Arts</option>
+        <select class="form-select" id="filter_cate" name="filter_cate" aria-label="Floating label select example">
+          <option value="" selected>Choose a Category</option>
+          <option value="Music">Music</option>
+          <option value="Gathering">Gathering</option>
+          <option value="Sports">Sports</option>
+          <option value="Business">Business</option>
+          <option value="Food&Drink">Food&Drink</option>
+          <option value="Visual Arts">Visual Arts</option>
+        </select>
+      </div>
+      <div>
+        <select class="form-select" id="date_sort" name="date_sort" aria-label="Floating label select example">
+          <option >Sort</option>
+          <option value="descend">Farthest to Closest</option>
+          <option value="ascend" selected>Closest to Farthest</option>
         </select>
       </div>
       <button class="btn btn-success" type="submit">Filter</button>
-      <div>
-        <select class="form-select" id="floatingSelect1" aria-label="Floating label select example">
-          <option selected>Sort</option>
-          <option value="1">Farthest to Closest</option>
-          <option value="2">Closest to Farthest</option>
-        </select>
-      </div>
-    </form>
-  </div>
+    </div>
+</form>
 
 </div>
 <div class="filter-display">
