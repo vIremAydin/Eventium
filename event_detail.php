@@ -9,7 +9,7 @@
     $sql1 = "SELECT first_name, participation_points FROM non_admin NATURAL JOIN participant WHERE user_id = '$userID'";
     $query1 = $connection->query($sql1);
     $result1 = $query1->fetch_assoc();
-    
+
 
     $sql2 = "SELECT E.event_id, E.event_date, E.event_title, E.event_description, E.age_restriction, E.event_location, N.first_name, N.middle_name, N.last_name, V.organization_name, E.event_category, E.event_quota, P.max_ticket_per_part
              FROM event E NATURAL JOIN paid_event P NATURAL JOIN non_admin N NATURAL LEFT OUTER JOIN verified_organizer V
@@ -48,6 +48,7 @@
             integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
             crossorigin="anonymous"></script>
 </head>
+
 <body>
 <div class="header row align-items-center">
     <div class="col-4 my-header" style="font-size: 30px;">

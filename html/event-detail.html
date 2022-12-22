@@ -51,7 +51,9 @@
 
 </div>
 <div class="btn-container">
-    <button type="button" class="btn btn-success"  data-bs-toggle="modal" data-bs-target="#exampleModal" style="margin-left: 70px">Join!(+50 points)</button>
+    <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#exampleModal"
+            style="margin-left: 70px">Join!(+50 points)
+    </button>
 
 </div>
 
@@ -59,6 +61,8 @@
     <img class="image-back" src="../icons/icons8-back-arrow-32.png" alt="back"/>
     <span>Go back to the list</span>
 </div>
+
+
 <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
@@ -80,12 +84,12 @@
                     </div>
                     <div style="display: flex; margin: 15px">
                         <label for="amount" class="col-sm-8 col-form-label">Enter Ticket Amount</label>
-                        <input  type="number" class="form-control" id="amount" placeholder="Amount">
+                        <input type="number" class="form-control" id="amount" placeholder="Amount">
                     </div>
                 </div>
             </div>
             <div class="modal-footer">
-                <div style="margin-right: 140px;">Total amount: 120$</div>
+                <div id="price" style="margin-right: 140px;">Total amount: 0</div>
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                 <button type="button" class="btn btn-primary">Purchase</button>
             </div>
