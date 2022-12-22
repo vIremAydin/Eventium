@@ -40,11 +40,7 @@
           integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <link rel="stylesheet" href="style/participant.css">
 </head>
-<script>
-    var price = "<?php echo $result3['event_id']; ?>";
 
-    document.getElementById("price").innerHTML = "<div id='price' style= 'margin-right: 140px;'>Total amount: " + price + "</div>";
-</script>
 <body>
 <div class="header row align-items-center">
     <div class="col-4 my-header" style="font-size: 30px;">
