@@ -89,9 +89,9 @@ $connection->close();
       </div>
       <div>
         <select class="form-select" id="date_sort" name="date_sort" aria-label="Floating label select example">
-          <option >Sort</option>
-          <option value="descend">Farthest to Closest</option>
-          <option value="ascend" selected>Closest to Farthest</option>
+          <option disabled>Sort</option>
+          <option value="DESC">Farthest to Closest</option>
+          <option value="ASC" selected>Closest to Farthest</option>
         </select>
       </div>
       <button class="btn btn-success" type="submit">Filter</button>
@@ -102,23 +102,26 @@ $connection->close();
 <div class="filter-display">
 
   <ul>
-  <?php while($result2 = $query2->fetch_assoc()){ ?>
-       <li>
+  <?php while($result2 = $query2->fetch_assoc()){
+    if ( !isset($result2['event_date']) && !isset($result2['event_title']) && !isset($result2['full_name']) && !isset($result2['full_name']) && !isset($result2['event_category'])) { ?>
+       <li><div> There is no event satifying the filters entered. Please try again.</div></li>
+    <?php } else { ?>
+      <li>
         <div class="date"><?php echo $result2['event_date']; ?></div>
         <div class="name"><?php echo $result2['event_title']; ?></div>
         <div class="name">
           <?php if (isset($result2['organization_name'])) {
-                  echo $result2['organization_name'];
-                } else {
-                  echo $result2['full_name'];
-                } ?>
+            echo $result2['organization_name'];
+          } else {
+            echo $result2['full_name'];
+          } ?>
         </div>
         <div class="name"><?php echo $result2['event_category']; ?></div>
         <div >
-          <button class="cancel" style="background-color: #198754;" onclick="window.location.href='./event_detail.php?id=<?php echo $result2['event_id'];?>&page=2';">details</button>
+          <button class="cancel" style="background-color: #198754;" onclick="window.location.href='./event_detail.php?id=<?php echo $result2['event_id']; ?>&page=2';">details</button>
         </div>
        </li>
-  <?php } ?>
+  <?php } } ?>
   </ul>
 
 </div>

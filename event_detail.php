@@ -81,7 +81,7 @@
         <div class="date">Date: <?php echo $result2['event_date']; ?></div>
         <div class="date">Remaining Quota: <?php echo $result2['event_quota']; ?></div>
     </div>
-    <?php if ($result2['age_restriction'] == null) {
+    <?php if ($result2['age_restriction'] == 0) {
                 ?> <div style="margin: 10px; font-size: 20px">No age restriction!</div> <?php
     } else { ?>
         <div style="margin: 10px; font-size: 20px">Any one younger than <?php echo $result2['age_restriction']; ?> is not accepted to this event!</div>

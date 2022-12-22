@@ -12,21 +12,11 @@ $result3 = ($connection->query("SELECT event_id FROM paid_event WHERE event_id =
 $eventIsPaid = $result3['event_id'];
 
 if (isset($eventIsPaid)) {
-  /*
-  $sql2 = "SELECT COUNT('ticket_id') as count FROM purchase NATURAL JOIN ticket WHERE event_id = '$eventID'";
-  $query2 = $connection->query($sql2);*/
-  echo "<script type='text/javascript'>alert('AAAAAAAAA1!');</script>";
 
   $sql = "SELECT row_number() over ( PARTITION by event_id ORDER BY ticket_price DESC ) category, ticket_price FROM price WHERE event_id = ".$eventIsPaid;
   $tickets = $connection->query($sql);
 
-  echo "<script type='text/javascript'>alert('".$tickets->fetch_assoc()."');</script>";
-} /*else {
-  $sql2 = "SELECT COUNT('user_id') as count FROM joins WHERE event_id = '$eventID'";
-  $query2 = $connection->query($sql2);
 }
-
-$count = $query2->fetch_assoc()['count'];*/
 
 $connection->close();
 
@@ -50,27 +40,28 @@ $connection->close();
     <div class="box-v">
       <div class="box-item">
         <label for="title" class="col-sm-4 col-form-label">Title</label>
-        <input  type="text" class="form-control" id="title" placeholder="<?php echo $result1['event_title'];?>">
+        <input  type="text" class="form-control" id="title" name="title" placeholder="<?php echo $result1['event_title'];?>">
       </div>
       <div class="box-item">
-        <label class="col-sm-4 col-form-label" for="floatingTextarea2">Details</label>
-        <textarea class="form-control" placeholder="<?php echo $result1['event_description'];?>" id="floatingTextarea2" style="height: 100px"></textarea>
+        <label class="col-sm-4 col-form-label" for="description">Details</label>
+        <textarea class="form-control" placeholder="<?php echo $result1['event_description'];?>" id="description" name="description" style="height: 100px"></textarea>
       </div>
       <div class="box-item">
-        <label for="Location" class="col-sm-4 col-form-label">Location</label>
-        <input  type="text" class="form-control" id="Location" placeholder="<?php echo $result1['event_location'];?>">
-      </div>
-
-      <div class="box-item">
-        <label for="Date" class="col-sm-4 col-form-label">Date</label>
-        <input  type="date" class="form-control" id="Date" placeholder="<?php echo $result1['event_date'];?>">
+        <label for="location" class="col-sm-4 col-form-label">Location</label>
+        <input  type="text" class="form-control" id="location" name="location" placeholder="<?php echo $result1['event_location'];?>">
       </div>
 
       <div class="box-item">
-        <label class="col-sm-4 col-form-label" for="floatingSelect">Choose A Category</label>
+        <label for="date" class="col-sm-4 col-form-label">Date</label>
+        <input  type="date" class="form-control" id="date" name="date" placeholder="<?php echo $result1['event_date'];?>">
+      </div>
 
-        <select class="form-select" id="floatingSelect" aria-label="Floating label select example">
+      <div class="box-item">
+        <label class="col-sm-4 col-form-label" for="category">Choose A Category</label>
+
+        <select class="form-select" id="category" name="category" aria-label="Floating label select example">
           <option disabled selected>Categories...</option>
+          <option value="Music">Music</option>
           <option value="Gathering">Gathering</option>
           <option value="Sports">Sports</option>
           <option value="Business">Business</option>
@@ -81,13 +72,13 @@ $connection->close();
 
       <div class="box-item">
         <label for="quota" class="col-sm-4 col-form-label">Enter A Quota</label>
-        <input  type="number" class="form-control" id="quota" placeholder="<?php echo (int) $result1['event_quota'] + (int) $result2['count'];?>">
+        <input  type="number" class="form-control" id="quota" name="quota" placeholder="<?php echo (int) $result1['event_quota'] + (int) $result2['count'];?>">
       </div>
 
       <div class="box-item">
-        <label class="col-sm-4 col-form-label" for="floatingSelect1">Choose An Age Restriction</label>
+        <label class="col-sm-4 col-form-label" for="age_restriction">Choose An Age Restriction</label>
 
-        <select class="form-select" id="floatingSelect1" aria-label="Floating label select example">
+        <select class="form-select" id="age_restriction" name="age_restriction" aria-label="Floating label select example">
           <option value="" disabled selected>Restrictions</option>
           <option value="0">None</option>
           <option value="7">+7</option>
@@ -95,19 +86,13 @@ $connection->close();
           <option value="21">+21</option>
         </select>
       </div>
-      
-      <div class="box-item">
-        <label for="new_price" class="col-sm-4 col-form-label">Ticket Price for Category </label>
-        <input type="number" class="form-control" id="new_price" name="new_price" placeholder="<?php echo $res['ticket_price']; ?>">
-        <button type="button">Remove</button>
-      </div>
 
       <?php if (isset($eventIsPaid)) { 
-        echo "<script type='text/javascript'>alert('AAAAAAAAA2');</script>";
         while ($res = $tickets->fetch_assoc()) { ?>
           <div class="box-item">
             <label for="new_price" class="col-sm-4 col-form-label">Ticket Price for Category <?php echo $res['category'];?></label>
             <input type="number" class="form-control" id="new_price" name="new_price" placeholder="<?php echo $res['ticket_price']; ?>">
+            <input type="hidden" id="ticket_category" name="ticket_category" value="<?php echo $res['category'];?>">
             <button type="button">Remove</button>
           </div>
       <?php } } ?>

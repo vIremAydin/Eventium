@@ -7,17 +7,17 @@ $age = $_GET['age'];
 /*
 echo "<script type='text/javascript'>alert('AAAAAAAA!');</script>";
 
-if(isset($_POST['filter_date']) && strlen($_POST['filter_date'])) {
-    echo "<script type='text/javascript'>alert('filter_date!');</script>";
+if(isset($_POST['min_date']) && strlen($_POST['min_date'])) {
+    echo "<script type='text/javascript'>alert('".$_POST['min_date']."');</script>";
 }
-if(isset($_POST['filter_title']) && strlen($_POST['filter_title'])) {
-    echo "<script type='text/javascript'>alert('filter_title!');</script>";
-}
+if(isset($_POST['max_date']) && strlen($_POST['max_date'])) {
+    echo "<script type='text/javascript'>alert('".$_POST['max_date']."');</script>";
+}/*
 if(isset($_POST['filter_org']) && strlen($_POST['filter_org'])) {
     echo "<script type='text/javascript'>alert('filter_org!');</script>";
 }
 if(isset($_POST['filter_cate']) && strlen($_POST['filter_cate'])) {
-    echo "<script type='text/javascript'>alert('filter_cate!');</script>";
+    echo "<script type='text/javascript'>alert('filter_cate');</script>";
 }
 if(isset($_POST['date_sort']) && strlen($_POST['date_sort'])) {
     echo "<script type='text/javascript'>alert('date_sort!');</script>";
@@ -33,21 +33,140 @@ $sql = "SELECT E.event_id, E.event_date, E.event_title, CONCAT(N.first_name, ' '
         FROM event E NATURAL JOIN non_admin N NATURAL LEFT OUTER JOIN verified_organizer V
         WHERE E.event_date > CURRENT_TIMESTAMP AND event_location in (SELECT NA.city FROM non_admin NA WHERE NA.user_id = '$id' AND ('$age' >= E.age_restriction OR E.age_restriction IS NULL)) ";
 
-if( strlen($_POST['filter_date']) ) {
-        echo "<script type='text/javascript'>alert('work in progress');</script>";
+if( strlen($_POST['min_date']) || strlen($_POST['max_date']) ) {
+    $min = $_POST['min_date'];
+    $max = $_POST['max_date'];
+
+    if (strlen($_POST['min_date']) && strlen($_POST['max_date'])) {
+        $sql .= " AND E.event_date >= '$min' AND E.event_date <= '$max'";
+
+        if (strlen($_POST['filter_title']) && strlen($_POST['filter_cate']) && strlen($_POST['filter_org'])) {
+            $sql .= " AND E.event_title LIKE '%" . $_POST['filter_title'] . "%'";
+            $sql .= " AND ( CONCAT(N.first_name, ' ' , N.last_name) LIKE '%" . $_POST['filter_org'] . "%' OR V.organization_name LIKE '%" . $_POST['filter_org'] . "%')";
+            $sql .= " AND E.event_category = '" . $_POST['filter_cate']."'";
+    
+        } else if (strlen($_POST['filter_title']) && strlen($_POST['filter_org'])) {
+            $sql .= " AND E.event_title LIKE '%" . $_POST['filter_title'] . "%'";
+            $sql .= " AND ( CONCAT(N.first_name, ' ' , N.last_name) LIKE '%" . $_POST['filter_org'] . "%' OR V.organization_name LIKE '%" . $_POST['filter_org'] . "%')";
+    
+        } else if (strlen($_POST['filter_title']) && strlen($_POST['filter_cate'])) {
+            $sql .= " AND E.event_title LIKE '%" . $_POST['filter_title'] . "%'";
+            $sql .= " AND E.event_category = '" . $_POST['filter_cate']."'";
+    
+        } else if (strlen($_POST['filter_cate']) && strlen($_POST['filter_org'])) {
+            $sql .= " AND E.event_category = '" . $_POST['filter_cate']."'";
+            $sql .= " AND ( CONCAT(N.first_name, ' ' , N.last_name) LIKE '%" . $_POST['filter_org'] . "%' OR V.organization_name LIKE '%" . $_POST['filter_org'] . "%')";
+    
+        } else if (strlen($_POST['filter_title'])) {
+            $sql .= " AND E.event_title LIKE '%" . $_POST['filter_title'] . "%'";
+    
+        } else if (strlen($_POST['filter_org'])) {
+            $sql .= " AND ( CONCAT(N.first_name, ' ' , N.last_name) LIKE '%" . $_POST['filter_org'] . "%' OR V.organization_name LIKE '%" . $_POST['filter_org'] . "%')";
+        
+        } else if (strlen($_POST['filter_cate'])) {
+            $sql .= " AND E.event_category = '" . $_POST['filter_cate']."'";
+    
+        }
+
+    } else if (strlen($_POST['min_date'])) {
+        $sql .= " AND E.event_date >= '$min'";
+
+        if (strlen($_POST['filter_title']) && strlen($_POST['filter_cate']) && strlen($_POST['filter_org'])) {
+            $sql .= " AND E.event_title LIKE '%" . $_POST['filter_title'] . "%'";
+            $sql .= " AND ( CONCAT(N.first_name, ' ' , N.last_name) LIKE '%" . $_POST['filter_org'] . "%' OR V.organization_name LIKE '%" . $_POST['filter_org'] . "%')";
+            $sql .= " AND E.event_category = '" . $_POST['filter_cate']."'";
+    
+        } else if (strlen($_POST['filter_title']) && strlen($_POST['filter_org'])) {
+            $sql .= " AND E.event_title LIKE '%" . $_POST['filter_title'] . "%'";
+            $sql .= " AND ( CONCAT(N.first_name, ' ' , N.last_name) LIKE '%" . $_POST['filter_org'] . "%' OR V.organization_name LIKE '%" . $_POST['filter_org'] . "%')";
+    
+        } else if (strlen($_POST['filter_title']) && strlen($_POST['filter_cate'])) {
+            $sql .= " AND E.event_title LIKE '%" . $_POST['filter_title'] . "%'";
+            $sql .= " AND E.event_category = '" . $_POST['filter_cate']."'";
+    
+        } else if (strlen($_POST['filter_cate']) && strlen($_POST['filter_org'])) {
+            $sql .= " AND E.event_category = '" . $_POST['filter_cate']."'";
+            $sql .= " AND ( CONCAT(N.first_name, ' ' , N.last_name) LIKE '%" . $_POST['filter_org'] . "%' OR V.organization_name LIKE '%" . $_POST['filter_org'] . "%')";
+    
+        } else if (strlen($_POST['filter_title'])) {
+            $sql .= " AND E.event_title LIKE '%" . $_POST['filter_title'] . "%'";
+    
+        } else if (strlen($_POST['filter_org'])) {
+            $sql .= " AND ( CONCAT(N.first_name, ' ' , N.last_name) LIKE '%" . $_POST['filter_org'] . "%' OR V.organization_name LIKE '%" . $_POST['filter_org'] . "%')";
+        
+        } else if (strlen($_POST['filter_cate'])) {
+            $sql .= " AND E.event_category = '" . $_POST['filter_cate']."'";
+    
+        }
+
+    } else if (strlen($_POST['max_date'])) {
+        $sql .= " AND E.event_date <= '$max'";
+
+        if (strlen($_POST['filter_title']) && strlen($_POST['filter_cate']) && strlen($_POST['filter_org'])) {
+            $sql .= " AND E.event_title LIKE '%" . $_POST['filter_title'] . "%'";
+            $sql .= " AND ( CONCAT(N.first_name, ' ' , N.last_name) LIKE '%" . $_POST['filter_org'] . "%' OR V.organization_name LIKE '%" . $_POST['filter_org'] . "%')";
+            $sql .= " AND E.event_category = '" . $_POST['filter_cate']."'";
+    
+        } else if (strlen($_POST['filter_title']) && strlen($_POST['filter_org'])) {
+            $sql .= " AND E.event_title LIKE '%" . $_POST['filter_title'] . "%'";
+            $sql .= " AND ( CONCAT(N.first_name, ' ' , N.last_name) LIKE '%" . $_POST['filter_org'] . "%' OR V.organization_name LIKE '%" . $_POST['filter_org'] . "%')";
+    
+        } else if (strlen($_POST['filter_title']) && strlen($_POST['filter_cate'])) {
+            $sql .= " AND E.event_title LIKE '%" . $_POST['filter_title'] . "%'";
+            $sql .= " AND E.event_category = '" . $_POST['filter_cate']."'";
+    
+        } else if (strlen($_POST['filter_cate']) && strlen($_POST['filter_org'])) {
+            $sql .= " AND E.event_category = '" . $_POST['filter_cate']."'";
+            $sql .= " AND ( CONCAT(N.first_name, ' ' , N.last_name) LIKE '%" . $_POST['filter_org'] . "%' OR V.organization_name LIKE '%" . $_POST['filter_org'] . "%')";
+    
+        } else if (strlen($_POST['filter_title'])) {
+            $sql .= " AND E.event_title LIKE '%" . $_POST['filter_title'] . "%'";
+    
+        } else if (strlen($_POST['filter_org'])) {
+            $sql .= " AND ( CONCAT(N.first_name, ' ' , N.last_name) LIKE '%" . $_POST['filter_org'] . "%' OR V.organization_name LIKE '%" . $_POST['filter_org'] . "%')";
+        
+        } else if (strlen($_POST['filter_cate'])) {
+            $sql .= " AND E.event_category = '" . $_POST['filter_cate']."'";
+    
+        }
+
+    }
+
 } else {
 
-    if (strlen($_POST['filter_title'])) {
+    if (strlen($_POST['filter_title']) && strlen($_POST['filter_cate']) && strlen($_POST['filter_org'])) {
+        $sql .= " AND E.event_title LIKE '%" . $_POST['filter_title'] . "%'";
+        $sql .= " AND ( CONCAT(N.first_name, ' ' , N.last_name) LIKE '%" . $_POST['filter_org'] . "%' OR V.organization_name LIKE '%" . $_POST['filter_org'] . "%')";
+        $sql .= " AND E.event_category = '" . $_POST['filter_cate']."'";
+
+    } else if (strlen($_POST['filter_title']) && strlen($_POST['filter_org'])) {
+        $sql .= " AND E.event_title LIKE '%" . $_POST['filter_title'] . "%'";
+        $sql .= " AND ( CONCAT(N.first_name, ' ' , N.last_name) LIKE '%" . $_POST['filter_org'] . "%' OR V.organization_name LIKE '%" . $_POST['filter_org'] . "%')";
+
+    } else if (strlen($_POST['filter_title']) && strlen($_POST['filter_cate'])) {
+        $sql .= " AND E.event_title LIKE '%" . $_POST['filter_title'] . "%'";
+        $sql .= " AND E.event_category = '" . $_POST['filter_cate']."'";
+
+    } else if (strlen($_POST['filter_cate']) && strlen($_POST['filter_org'])) {
+        $sql .= " AND E.event_category = '" . $_POST['filter_cate']."'";
+        $sql .= " AND ( CONCAT(N.first_name, ' ' , N.last_name) LIKE '%" . $_POST['filter_org'] . "%' OR V.organization_name LIKE '%" . $_POST['filter_org'] . "%')";
+
+    } else if (strlen($_POST['filter_title'])) {
         $sql .= " AND E.event_title LIKE '%" . $_POST['filter_title'] . "%'";
 
     } else if (strlen($_POST['filter_org'])) {
-        $sql .= " AND ( full_name LIKE '%" . $_POST['filter_org'] . "%' OR V.organization_name LIKE '%" . $_POST['filter_org'] . "%')";
+        $sql .= " AND ( CONCAT(N.first_name, ' ' , N.last_name) LIKE '%" . $_POST['filter_org'] . "%' OR V.organization_name LIKE '%" . $_POST['filter_org'] . "%')";
     
-    }
+    } else if (strlen($_POST['filter_cate'])) {
+        $sql .= " AND E.event_category = '" . $_POST['filter_cate']."'";
 
+    }
 }
 
+
+$sql .= " ORDER BY E.event_date " . $_POST['date_sort'];
+
 $_SESSION['sql'] = $sql;
-header("location: event_filter.php");
+echo "<script>window.location = './event_filter.php';</script>";
 $connection->close();
 ?>

@@ -37,6 +37,15 @@ if(isset($_POST['age_restriction']) && strlen($_POST['age_restriction'])) {
 }
 
 if ($page == "v") {
+
+    if(isset($_POST['ticket_category']) && strlen($_POST['ticket_category'])) {
+        $query = $connection->query("SELECT COUNT('event_id') as ticket_categories FROM price WHERE event_id = '$eventID'");
+        $ticketCategories = ($query->fetch_assoc())['ticket_categories'];
+        $total = $ticketCategories + 1;
+// HOW TO UPDATE A FUCKING TICKET PRICE WITH ONLY A NUMBER FOR CATEGORY IMMA LOSE MY MIND
+        $connection->query("UPDATE event SET ticket_category = '".$_POST['ticket_category']."' WHERE event_id = '$eventID'");
+    }
+
     header("Location: ./verified_edit_event.php?id=".urlencode($eventID));
 } else {
     header("Location: ./edit_event.php?id=".urlencode($eventID));
