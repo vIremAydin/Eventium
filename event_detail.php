@@ -9,7 +9,7 @@
     $sql1 = "SELECT first_name, participation_points FROM non_admin NATURAL JOIN participant WHERE user_id = '$userID'";
     $query1 = $connection->query($sql1);
     $result1 = $query1->fetch_assoc();
-    
+
 
     $sql2 = "SELECT E.event_id, E.event_date, E.event_title, E.event_description, E.age_restriction, E.event_location, N.first_name, N.middle_name, N.last_name, V.organization_name, E.event_category, E.event_quota
              FROM event E NATURAL JOIN non_admin N NATURAL LEFT OUTER JOIN verified_organizer V
@@ -28,7 +28,7 @@
     $query3 = $connection->query($sql3);
     $result3 = $query3->fetch_assoc();
 
-    $connection->close();   
+    $connection->close();
 ?>
 
 <!DOCTYPE html>
@@ -40,6 +40,11 @@
           integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <link rel="stylesheet" href="style/participant.css">
 </head>
+<script>
+    var price = "<?php echo $result3['event_id']; ?>";
+
+    document.getElementById("price").innerHTML = "<div id='price' style= 'margin-right: 140px;'>Total amount: " + price + "</div>";
+</script>
 <body>
 <div class="header row align-items-center">
     <div class="col-4 my-header" style="font-size: 30px;">
