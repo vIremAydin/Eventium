@@ -9,15 +9,24 @@ $query1 = $connection->query($sql1);
 $result1 = $query1->fetch_assoc();
 
 $result3 = ($connection->query("SELECT event_id FROM paid_event WHERE event_id = '$eventID'"))->fetch_assoc();
-if (isset($result3['event_id'])) {
+$eventIsPaid = $result3['event_id'];
+
+if (isset($eventIsPaid)) {
+  /*
   $sql2 = "SELECT COUNT('ticket_id') as count FROM purchase NATURAL JOIN ticket WHERE event_id = '$eventID'";
-  $query2 = $connection->query($sql2);
-  $result2 = $query2->fetch_assoc();
-} else {
+  $query2 = $connection->query($sql2);*/
+  echo "<script type='text/javascript'>alert('AAAAAAAAA1!');</script>";
+
+  $sql = "SELECT row_number() over ( PARTITION by event_id ORDER BY ticket_price DESC ) category, ticket_price FROM price WHERE event_id = ".$eventIsPaid;
+  $tickets = $connection->query($sql);
+
+  echo "<script type='text/javascript'>alert('".$tickets->fetch_assoc()."');</script>";
+} /*else {
   $sql2 = "SELECT COUNT('user_id') as count FROM joins WHERE event_id = '$eventID'";
   $query2 = $connection->query($sql2);
-  $result2 = $query2->fetch_assoc();
 }
+
+$count = $query2->fetch_assoc()['count'];*/
 
 $connection->close();
 
@@ -35,7 +44,7 @@ $connection->close();
 
 </head>
 <body>
-<form method="post" action="./update_event.php?id=<?php echo $eventID;?>">
+<form method="post" action="./update_event.php?id=<?php echo $eventID;?>&page=v">
   <div class="container">
     <div class="title-v">Editing Event: <?php echo $result1['event_title'];?></div>
     <div class="box-v">
@@ -71,15 +80,15 @@ $connection->close();
       </div>
 
       <div class="box-item">
-        <label for="Quota" class="col-sm-4 col-form-label">Enter A Quota</label>
-        <input  type="number" class="form-control" id="Quota" placeholder="<?php echo (int) $result1['event_quota'] + (int) $result2['count'];?>">
+        <label for="quota" class="col-sm-4 col-form-label">Enter A Quota</label>
+        <input  type="number" class="form-control" id="quota" placeholder="<?php echo (int) $result1['event_quota'] + (int) $result2['count'];?>">
       </div>
 
       <div class="box-item">
         <label class="col-sm-4 col-form-label" for="floatingSelect1">Choose An Age Restriction</label>
 
         <select class="form-select" id="floatingSelect1" aria-label="Floating label select example">
-          <option value="" disabled selected>Restrictions..</option>
+          <option value="" disabled selected>Restrictions</option>
           <option value="0">None</option>
           <option value="7">+7</option>
           <option value="18">+18</option>
@@ -87,20 +96,25 @@ $connection->close();
         </select>
       </div>
       
-      <?php if (isset($result3['event_id'])) { 
-        $sql = "SELECT row_number() over ( PARTITION by event_id ORDER BY ticket_price DESC ) category, ticket_price FROM price WHERE event_id = '".$result3['event_id']."'";
-        $tickets = $connection->query($sql);
+      <div class="box-item">
+        <label for="new_price" class="col-sm-4 col-form-label">Ticket Price for Category </label>
+        <input type="number" class="form-control" id="new_price" name="new_price" placeholder="<?php echo $res['ticket_price']; ?>">
+        <button type="button">Remove</button>
+      </div>
+
+      <?php if (isset($eventIsPaid)) { 
+        echo "<script type='text/javascript'>alert('AAAAAAAAA2');</script>";
         while ($res = $tickets->fetch_assoc()) { ?>
           <div class="box-item">
-            <label for="new_price<?php echo $res['category'];?>" class="col-sm-4 col-form-label">Ticket Price for Category <?php echo $res['category'];?></label>
-            <input type="number" class="form-control" id="new_price<?php echo $res['category'];?>" name="new_price<?php echo $res['category'];?>" placeholder="<?php echo $res['ticket_price']; ?>">
+            <label for="new_price" class="col-sm-4 col-form-label">Ticket Price for Category <?php echo $res['category'];?></label>
+            <input type="number" class="form-control" id="new_price" name="new_price" placeholder="<?php echo $res['ticket_price']; ?>">
             <button type="button">Remove</button>
           </div>
       <?php } } ?>
     </div>
   </div>
   <div class="evt-btn-container">
-    <button class="btn pink">Update</button>
+    <button class="btn pink" id="update-btn" type="submit" value="Update">Update</button>
   </div>
 </form>
 

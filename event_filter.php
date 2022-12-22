@@ -8,12 +8,12 @@ $result1 = $query1->fetch_assoc();
 
 $age = (int) date("Y") - (int)$result1['age_year'];
 
-if ($_POST['sql'] == null) {
-  $sql2 = "SELECT E.event_id, E.event_date, E.event_title, N.first_name, N.last_name, V.organization_name, E.event_category 
+if ($_SESSION['sql'] == null) {
+  $sql2 = "SELECT E.event_id, E.event_date, E.event_title, CONCAT(N.first_name, ' ', N.last_name) as full_name, V.organization_name, E.event_category 
         FROM event E NATURAL JOIN non_admin N NATURAL LEFT OUTER JOIN verified_organizer V
         WHERE E.event_date > CURRENT_TIMESTAMP AND event_location in (SELECT NA.city FROM non_admin NA WHERE NA.user_id = '$id' AND ('$age' >= E.age_restriction OR E.age_restriction IS NULL))";
 } else {
-  $sql2 = $_POST['sql'];
+  $sql2 = $_SESSION['sql'];
 }
 
 $query2 = $connection->query($sql2);
@@ -110,7 +110,7 @@ $connection->close();
           <?php if (isset($result2['organization_name'])) {
                   echo $result2['organization_name'];
                 } else {
-                  echo $result2['first_name'] . " " . $result2['last_name'];
+                  echo $result2['full_name'];
                 } ?>
         </div>
         <div class="name"><?php echo $result2['event_category']; ?></div>

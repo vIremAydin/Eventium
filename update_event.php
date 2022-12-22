@@ -3,7 +3,7 @@ session_start();
 require('connection.php');
 $userID = $_SESSION['user_id'];
 $eventID = $_GET['id'];
-
+$page = $_GET['page'];
 
 
 if(isset($_POST['title']) && strlen($_POST['title'])) {
@@ -36,6 +36,10 @@ if(isset($_POST['age_restriction']) && strlen($_POST['age_restriction'])) {
     $connection->query("UPDATE event SET age_restriction = '".$_POST['age_restriction']."' WHERE event_id = '$eventID'");
 }
 
-header("Location: ./edit_event.php?id=".urlencode($eventID));
+if ($page == "v") {
+    header("Location: ./verified_edit_event.php?id=".urlencode($eventID));
+} else {
+    header("Location: ./edit_event.php?id=".urlencode($eventID));
+}
 
 ?>

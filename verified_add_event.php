@@ -2,7 +2,7 @@
 session_start();
 require('connection.php');
 $uid = $_SESSION['user_id'];
-
+$myCount = 0;
 ?>
 
 <!DOCTYPE html>
@@ -71,14 +71,18 @@ $uid = $_SESSION['user_id'];
         </div>
         <script>
 
-            let index = 0;
+            var index = 0;
 
             function add() {
                 index++;
+                <?php $myCount++;?>
+                alert(index);
+                document.cookie = "index = " + index
+                //alert(" <?php echo $myCount; ?> ");
 
                 document.getElementById("all-ticket").innerHTML += "            <div id='" + index + "' class=\"box-item\">\n" +
-                    "                <label class=\"col-sm-4 col-form-label\" for=\"ticket" + index + "\">" + "Ticket Category " + index + "</label>\n" +
-                    "                <input type=\"number\" class=\"form-control\" id=\"ticket" + index + "\" name=\"ticket" + index + "\" placeholder=\" Enter Price\">\n" +
+                    "                <label class=\"col-sm-4 col-form-label\" for=\"price\">" + "Ticket Category " + index + "</label>\n" +
+                    "                <input type=\"number\" class=\"form-control\" id=\"price" + index + "\" name=\"price" + index + "\" placeholder=\" Enter Price\">\n" +
                     "            </div>";
             }
 
@@ -97,11 +101,15 @@ $uid = $_SESSION['user_id'];
 
                 document.getElementById(index).remove();
                 index--;
+                <?php $myCount--;?>
+                document.cookie = "index = " + index
             }
 
             function deleteAll() {
                 document.getElementById("all-ticket").innerHTML = "<div>Enter ticket prices for categories:</div>\n";
                 index = 0;
+                <?php $myCount = 0;?>
+                document.cookie = "index = " + index
             }
 
         </script>
@@ -150,7 +158,7 @@ $uid = $_SESSION['user_id'];
     </div>
 </div>
 <div class="evt-btn-container">
-    <button type="submit" class="btn pink">Create!</button>
+    <button type="submit" class="btn pink" name="create" id="create">Create!</button>
 </div>
 </form>
 
@@ -163,7 +171,10 @@ $uid = $_SESSION['user_id'];
 </body>
 </html>
 
-<?php 
+<?php
+if (isset($_POST['create']) && $myCount > 0) {
+    echo "<script type='text/javascript'>alert('" . $myCount . "');</script>";
+}
 
 if(  $_POST['btnradio'] == "free" ){
     if( isset($_POST['title']) && isset($_POST['description']) && isset($_POST['location']) && isset($_POST['date']) && isset($_POST['category']) && isset($_POST['quota'])) {
@@ -186,14 +197,23 @@ if(  $_POST['btnradio'] == "free" ){
                 $sql = "SELECT event_id FROM event WHERE user_id = '$uid' ORDER BY event_id DESC LIMIT 1";
                 $eventID = (($connection->query($sql))->fetch_assoc())['event_id'];
                 $connection->query("INSERT INTO paid_event VALUES ('$eventID', '".(int)$_POST['max_ticket']."', '$uid')");
-
+                
+                $myPhpVar= $_COOKIE['index'];
+                echo "<script type='text/javascript'>alert('".$myPhpVar."');</script>";
+                //echo $myPhpVar;
+                
                 $i = 1;
-                while (isset($_POST['ticket' . $i . ''])) {
-                    $connection->query("INSERT INTO price VALUES ('$eventID', '".(int)$_POST['ticket' . $i . '']."')");
+                while ($myPhpVar != 0) {
+                    echo "<script type='text/javascript'>alert('IN WHILE!');</script>";
+                    $myString = 'price'.$myPhpVar;
+                    echo "<script type='text/javascript'>alert('".$myString."');</script>";
+                    $connection->query("INSERT INTO price VALUES ('$eventID', '".(int)$_POST[$myString]."')");
                     $i++;
+                    $myPhpVar--;
                 }
 
                 echo "<script type='text/javascript'>alert('Event is added!');</script>";
+                echo "<script>window.location = './verifiedOrganizer_home.php';</script>";
             } else {
                 echo "<script type='text/javascript'>alert('Event creation is failed!!');</script>";
             }

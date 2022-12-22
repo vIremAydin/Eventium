@@ -11,8 +11,8 @@
     $result1 = $query1->fetch_assoc();
     
 
-    $sql2 = "SELECT E.event_id, E.event_date, E.event_title, E.event_description, E.age_restriction, E.event_location, N.first_name, N.middle_name, N.last_name, V.organization_name, E.event_category, E.event_quota
-             FROM event E NATURAL JOIN non_admin N NATURAL LEFT OUTER JOIN verified_organizer V
+    $sql2 = "SELECT E.event_id, E.event_date, E.event_title, E.event_description, E.age_restriction, E.event_location, N.first_name, N.middle_name, N.last_name, V.organization_name, E.event_category, E.event_quota, P.max_ticket_per_part
+             FROM event E NATURAL JOIN paid_event P NATURAL JOIN non_admin N NATURAL LEFT OUTER JOIN verified_organizer V
              WHERE E.event_id = '$eventID'";
     $query2 = $connection->query($sql2);
     $result2 = $query2->fetch_assoc();
@@ -28,6 +28,9 @@
     $query3 = $connection->query($sql3);
     $result3 = $query3->fetch_assoc();
 
+    $sql4 = "SELECT row_number() over ( PARTITION by event_id ORDER BY ticket_price DESC ) category, ticket_price FROM price WHERE event_id = '$eventID'";
+    $query4 = $connection->query($sql4);    
+
     $connection->close();   
 ?>
 
@@ -39,6 +42,11 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
           integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <link rel="stylesheet" href="style/participant.css">
+    <link rel="stylesheet" href="style/wallet-style.css">
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+            crossorigin="anonymous"></script>
 </head>
 <body>
 <div class="header row align-items-center">
@@ -82,7 +90,7 @@
 <?php if( isset($result3['user_id']) && isset($result3['event_id']) ){ ?>
     <div class="btn" style="background-color: gray; border-width: 0; color: whitesmoke">Joined</div>
 <?php } else if ( isset($result2['organization_name'])  ){ ?>
-    <button type="button" class="btn btn-success" style="margin-left: 70px" onclick="window.location.href='./purchase_ticket.php?data=<?php echo $result2['event_id']; ?>';">Purchase!</button>
+    <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#exampleModal" style="margin-left: 70px">Purchase!</button>
 <?php } else { ?>
     <button type="button" class="btn btn-success" style="margin-left: 70px" onclick="window.location.href='./join_event.php?data=<?php echo $result2['event_id']; ?>';">Join!</button>
 <?php } ?>
@@ -100,6 +108,42 @@
             <span>Go back to the list</span>
         </button>
     <?php } ?>
+</div>
+
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="exampleModalLabel">Ticket Categories</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <form method="post" action="./purchase_ticket.php">
+            <div class="modal-body">
+                <div class="card-container">
+                    <?php while( $result4 = $query4->fetch_assoc()) { ?>
+                        <div class="card">
+                            <div class="card-item">Category <?php echo $result4['category']; ?></div>
+                            <div class="card-item">Price <?php echo $result4['ticket_price']; ?>$</div>
+                            <label for="btn">Select</label>
+                            <input type="radio" class="btn btn-light" id="btn" name="btn" value="<?php echo $result4['ticket_price']; ?>">
+                        </div>
+                    <?php }
+                    $_SESSION['event_id'] = $eventID; ?>
+                    <div style="display: flex; margin: 15px">
+                        <label for="amount" class="col-sm-8 col-form-label">Enter Ticket Amount</label>
+                        <input  type="number" class="form-control" id="amount" name="amount" placeholder="Amount" min="0" max="<?php echo $result2['max_ticket_per_part']; ?>">
+                    </div>
+                </div>
+            </div>
+
+            <div class="modal-footer">
+                <div style="margin-right: 140px;">Total amount: :D</div>
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="submit" class="btn btn-primary" >Purchase</button>
+            </div>
+            </form>
+        </div>
+    </div>
 </div>
 
 </body>
