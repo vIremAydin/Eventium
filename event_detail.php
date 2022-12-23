@@ -12,7 +12,7 @@
 
 
     $sql2 = "SELECT E.event_id, E.event_date, E.event_title, E.event_description, E.age_restriction, E.event_location, N.first_name, N.middle_name, N.last_name, V.organization_name, E.event_category, E.event_quota, P.max_ticket_per_part
-             FROM event E NATURAL JOIN paid_event P NATURAL JOIN non_admin N NATURAL LEFT OUTER JOIN verified_organizer V
+             FROM event E NATURAL LEFT OUTER JOIN paid_event P NATURAL JOIN non_admin N NATURAL LEFT OUTER JOIN verified_organizer V
              WHERE E.event_id = '$eventID'";
     $query2 = $connection->query($sql2);
     $result2 = $query2->fetch_assoc();

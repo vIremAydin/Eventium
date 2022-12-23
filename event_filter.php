@@ -102,10 +102,7 @@ $connection->close();
 <div class="filter-display">
 
   <ul>
-  <?php while($result2 = $query2->fetch_assoc()){
-    if ( !isset($result2['event_date']) && !isset($result2['event_title']) && !isset($result2['full_name']) && !isset($result2['full_name']) && !isset($result2['event_category'])) { ?>
-       <li><div> There is no event satifying the filters entered. Please try again.</div></li>
-    <?php } else { ?>
+  <?php while($result2 = $query2->fetch_assoc()){?>
       <li>
         <div class="date"><?php echo $result2['event_date']; ?></div>
         <div class="name"><?php echo $result2['event_title']; ?></div>
@@ -121,7 +118,7 @@ $connection->close();
           <button class="cancel" style="background-color: #198754;" onclick="window.location.href='./event_detail.php?id=<?php echo $result2['event_id']; ?>&page=2';">details</button>
         </div>
        </li>
-  <?php } } ?>
+  <?php } ?>
   </ul>
 
 </div>

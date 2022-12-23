@@ -4,30 +4,6 @@ session_start();
 $id = $_SESSION['user_id'];
 $age = $_GET['age'];
 
-/*
-echo "<script type='text/javascript'>alert('AAAAAAAA!');</script>";
-
-if(isset($_POST['min_date']) && strlen($_POST['min_date'])) {
-    echo "<script type='text/javascript'>alert('".$_POST['min_date']."');</script>";
-}
-if(isset($_POST['max_date']) && strlen($_POST['max_date'])) {
-    echo "<script type='text/javascript'>alert('".$_POST['max_date']."');</script>";
-}/*
-if(isset($_POST['filter_org']) && strlen($_POST['filter_org'])) {
-    echo "<script type='text/javascript'>alert('filter_org!');</script>";
-}
-if(isset($_POST['filter_cate']) && strlen($_POST['filter_cate'])) {
-    echo "<script type='text/javascript'>alert('filter_cate');</script>";
-}
-if(isset($_POST['date_sort']) && strlen($_POST['date_sort'])) {
-    echo "<script type='text/javascript'>alert('date_sort!');</script>";
-}
-
-$filterDate = $_POST['filter_date'];
-$filterTitle = $_POST['filter_title'];
-$filterOrg = $_POST['filter_org'];
-$filterCate = $_POST['filter_cate'];
-$sortDate = $_POST['date_sort'];*/
 
 $sql = "SELECT E.event_id, E.event_date, E.event_title, CONCAT(N.first_name, ' ', N.last_name) as full_name, V.organization_name, E.event_category 
         FROM event E NATURAL JOIN non_admin N NATURAL LEFT OUTER JOIN verified_organizer V
