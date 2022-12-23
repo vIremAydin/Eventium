@@ -22,6 +22,8 @@
             crossorigin="anonymous"
             referrerpolicy="no-referrer"
     ></script>
+    <link rel="stylesheet" href="../style/admin-style.css">
+
 
 </head>
 <body>
@@ -43,23 +45,43 @@
 
 
 
-<div class="report" id="invoice">
+<div class="report" id="invoice" style="font-size: 15px">
     <div class="header">Report Results</div>
-        <div class="explain">
-            The most popular and unpopular organizers which created at least 5 events in at least two different cities for all cities
-        </div>
-    <div class="box-report" style="font-size: 15px;">
-        <div class="block-report">
-            <div>City : Ankara</div>
-            <div>The Most Popular Organizer : Bora Bora Popularity : 400 </div>
-            <div>The Least Popular Organizer : Bora Bora Popularity : 5 </div>
-        </div>
-        <div class="block-report">
-            <div>City : Istanbul</div>
-            <div>The Most Popular Organizer : Bora Bora Popularity : 400 </div>
-            <div>The Least Popular Organizer : Bora Bora Popularity : 5 </div>
-        </div>
+
+    <div class="explain">The most popular and unpopular organizers which created at least 5 events in at least two different cities for all cities</div>
+    <div class="box-report">
+        <table class="p-container table table-striped">
+            <thead>
+            <tr>
+                <th scope="col">City</th>
+                <th scope="col">The Most Popular Organizer (Popularity)</th>
+                <th scope="col">The Least Popular Organizer (Popularity)</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <th scope="row">Ankara</th>
+                <td>Bora Bora (444)</td>
+                <td>Bora Bora (4)</td>
+
+            </tr>
+            <tr>
+                <th scope="row">Istanbul</th>
+                <td>Bora Bora (444)</td>
+                <td>Bora Bora (4)</td>
+
+            </tr>
+            <tr>
+                <th scope="row">Kutahya</th>
+                <td>Bora Bora (444)</td>
+                <td>Bora Bora (4)</td>
+
+            </tr>
+
+            </tbody>
+        </table>
     </div>
+
 </div>
 
 <div class="go-back">
