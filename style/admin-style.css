@@ -44,6 +44,15 @@
 justify-content: space-between;,
 
 }
+
+.in-block{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 50%;
+    margin-right: 30px;
+}
+
 h3{
     text-align: center;
     margin: 50px;
