@@ -1,12 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="f7c6b7d0-7244-4ac1-8ebe-ae1d129aebbc" name="Changes" comment="report-max-participant.html">
-      <change afterPath="$PROJECT_DIR$/html/report-events-in-next-month.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/html/report-participants-of-category.html" afterDir="false" />
+    <list default="true" id="f7c6b7d0-7244-4ac1-8ebe-ae1d129aebbc" name="Changes" comment="all reports added">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/html/report-max-participant.html" beforeDir="false" afterPath="$PROJECT_DIR$/html/report-max-participant.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/style/admin-style.css" beforeDir="false" afterPath="$PROJECT_DIR$/style/admin-style.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/html/report-avrg-num.html" beforeDir="false" afterPath="$PROJECT_DIR$/html/report-avrg-num.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -81,7 +78,7 @@
       <workItem from="1671542436453" duration="4794000" />
       <workItem from="1671627137982" duration="1377000" />
       <workItem from="1671715069664" duration="2592000" />
-      <workItem from="1671808078230" duration="7245000" />
+      <workItem from="1671808078230" duration="8201000" />
     </task>
     <task id="LOCAL-00001" summary="login added">
       <created>1670100154978</created>
@@ -377,7 +374,14 @@
       <option name="project" value="LOCAL" />
       <updated>1671814830038</updated>
     </task>
-    <option name="localTasksCounter" value="43" />
+    <task id="LOCAL-00043" summary="all reports added">
+      <created>1671815558706</created>
+      <option name="number" value="00043" />
+      <option name="presentableId" value="LOCAL-00043" />
+      <option name="project" value="LOCAL" />
+      <updated>1671815558706</updated>
+    </task>
+    <option name="localTasksCounter" value="44" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -397,7 +401,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="ticket.html finished" />
     <MESSAGE value="organizerHome.html added." />
     <MESSAGE value="admin-style.css adminHome.html added" />
     <MESSAGE value="event-detail.html added" />
@@ -422,6 +425,7 @@
     <MESSAGE value="adsız csds" />
     <MESSAGE value="admn" />
     <MESSAGE value="report-max-participant.html" />
-    <option name="LAST_COMMIT_MESSAGE" value="report-max-participant.html" />
+    <MESSAGE value="all reports added" />
+    <option name="LAST_COMMIT_MESSAGE" value="all reports added" />
   </component>
 </project>
