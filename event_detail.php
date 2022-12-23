@@ -134,11 +134,17 @@
                         <label for="amount" class="col-sm-8 col-form-label">Enter Ticket Amount</label>
                         <input  type="number" class="form-control" id="amount" name="amount" placeholder="Amount" min="0" max="<?php echo $result2['max_ticket_per_part']; ?>">
                     </div>
+                    <div style="display: flex; margin: 15px">
+                        <label for="refund1" class="col-sm-8 col-form-label">Are tickets refundable: </label>
+                        <input type="radio" id="refund1" name="refundable" value="TRUE">
+                        <label style="margin: 20px;" for="refund1">Yes</label>
+                        <input type="radio" id="refund2" name="refundable" value="FALSE">
+                        <label  style="margin: 20px;" for="refund2">No</label>
+                    </div>
                 </div>
             </div>
 
             <div class="modal-footer">
-                <div style="margin-right: 140px;">Total amount: :D</div>
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                 <button type="submit" class="btn btn-primary" >Purchase</button>
             </div>

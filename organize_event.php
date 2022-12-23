@@ -113,6 +113,19 @@ if( isset($_POST['title']) && isset($_POST['description']) && isset($_POST['loca
         $statement->bind_param( "isssssii", $uid, $_POST['location'], $_POST['date'], $_POST['category'], $_POST['title'], $_POST['description'], $_POST['quota'], $_POST['age_restriction'] );
         if ($statement->execute()) {
             echo "<script type='text/javascript'>alert('Event is added!');</script>";
+            $sql2 = "SELECT event_id from event where user_id = '$uid' order by event_id DESC LIMIT 1";
+            $query2 = $connection->query($sql2);
+            if( $result2 = $query2->fetch_assoc() ) {
+                $myVar = (int) $result2['event_id'];
+                echo "<script type='text/javascript'>alert('event id is = " . $myVar . "');</script>";
+                #$sql2 = "CREATE VIEW view'(int) $result2['event_id']' AS SELECT P.first_name, P.last_name, P.date_of_birth, P.phone FROM non_admin P NATURAL JOIN joins J WHERE J.event_id = '(int) $result2['event_id']' AND P.user_id = J.user_id";
+                $sql2 = "CREATE VIEW view".strval($myVar)." AS SELECT P.first_name, P.middle_name, P.last_name, P.date_of_birth, P.phone, P.user_id FROM joins J NATURAL JOIN non_admin P WHERE J.event_id = '$myVar' AND P.user_id = J.user_id";
+                $query2 = $connection->query($sql2);
+                echo "<script type='text/javascript'>alert('view created: (fetch disi)" . $result2['first_name'] . "');</script>";
+                //if( $result2 = $query2->fetch_assoc() ) {
+                //    echo "<script type='text/javascript'>alert('view created: " . $result2['first_name'] . "');</script>";
+                //}
+            }
         } else {
             echo "<script type='text/javascript'>alert('Event creation is failed!!');</script>";
         }

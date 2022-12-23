@@ -61,7 +61,8 @@ $connection->close();
     <div class="search-box">
         <form class="d-flex" method="post" action="./filtering.php">
             <input class="form-control me-2" type="text" id="filter_title" name="filter_title" placeholder="Search an event" aria-label="Search an event">
-            <button class="btn btn-outline-dark" type="submit" onclick="window.location.href='./filtering.php';">Search</button>
+            <input type="hidden" id="date_sort" name="date_sort" value="ASC">
+            <button class="btn btn-outline-dark" type="submit" >Search</button>
         </form>
     </div>
 

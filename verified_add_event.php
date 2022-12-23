@@ -78,7 +78,6 @@ $myCount = 0;
                 <?php $myCount++;?>
                 alert(index);
                 document.cookie = "index = " + index
-                //alert(" <?php echo $myCount; ?> ");
 
                 document.getElementById("all-ticket").innerHTML += "            <div id='" + index + "' class=\"box-item\">\n" +
                     "                <label class=\"col-sm-4 col-form-label\" for=\"price\">" + "Ticket Category " + index + "</label>\n" +

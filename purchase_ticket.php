@@ -7,6 +7,11 @@ $userID = $_SESSION['user_id'];
 $eventID = $_SESSION['event_id'];
 $price = $_POST['btn'];
 $amount = $_POST['amount'];
+if ($_POST['refundable'] == "TRUE") {
+    $refund = 1;
+} else if ($_POST['refundable'] == "FALSE") {
+    $refund = 0;
+}
 
 
 $total = (float) $price * (float) $amount;
@@ -20,9 +25,8 @@ if ($balance < $total) {
     $connection->query("UPDATE wallet SET balance = '$newBalance' WHERE wallet_id = ( SELECT wallet_id FROM has WHERE user_id = '$userID' )");
 
     for ($i = 1; $i <= $amount; $i++) {
-        $nonRefund = 0;
         if ($stmt = $connection->prepare("INSERT INTO ticket VALUES (NULL, ?, ?, ? )")) {
-            $stmt->bind_param("iii", $nonRefund, $price, $eventID);
+            $stmt->bind_param("iii", $refund, $price, $eventID);
             if ($stmt->execute()) {
                 echo "<script type='text/javascript'>alert('ticket created!');</script>";
             }
