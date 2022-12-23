@@ -2,8 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="f7c6b7d0-7244-4ac1-8ebe-ae1d129aebbc" name="Changes" comment="admn">
+      <change afterPath="$PROJECT_DIR$/html/report-max-participant.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/html/report-popular-organizer.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/html/report.html" beforeDir="false" afterPath="$PROJECT_DIR$/html/report.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/style/admin-style.css" beforeDir="false" afterPath="$PROJECT_DIR$/style/admin-style.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -45,15 +47,15 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/icons" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/html" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="settings.editor.selected.configurable" value="project.scopes" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\Users\virem\WebstormProjects\Eventium_1\icons" />
       <recent name="C:\Users\virem\WebstormProjects\Eventium_1\html" />
+      <recent name="C:\Users\virem\WebstormProjects\Eventium_1\icons" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\virem\WebstormProjects\Eventium_1\style" />
@@ -78,7 +80,7 @@
       <workItem from="1671542436453" duration="4794000" />
       <workItem from="1671627137982" duration="1377000" />
       <workItem from="1671715069664" duration="2592000" />
-      <workItem from="1671808078230" duration="3441000" />
+      <workItem from="1671808078230" duration="6628000" />
     </task>
     <task id="LOCAL-00001" summary="login added">
       <created>1670100154978</created>
@@ -360,7 +362,14 @@
       <option name="project" value="LOCAL" />
       <updated>1671811089934</updated>
     </task>
-    <option name="localTasksCounter" value="41" />
+    <task id="LOCAL-00041" summary="admn">
+      <created>1671811577487</created>
+      <option name="number" value="00041" />
+      <option name="presentableId" value="LOCAL-00041" />
+      <option name="project" value="LOCAL" />
+      <updated>1671811577487</updated>
+    </task>
+    <option name="localTasksCounter" value="42" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
