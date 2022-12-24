@@ -54,7 +54,14 @@
             <div class="mb-3 row">
                 <div class="col-sm-4 align-self-center">
                     <label for="city" class="col-sm-4 col-form-label">City</label>
-                    <input type="text" class="form-control" name="city" id="city" placeholder="City" required="required">
+                    <select class="form-control" name="city" id="city" placeholder="City" required="required">
+                        <option value="" disabled selected>City</option>
+                        <option value="Ankara">Ankara</option>
+                        <option value="Istanbul">İstanbul</option>
+                        <option value="Izmir">İzmir</option>
+                        <option value="Adana">Adana</option>
+                        <option value="Antalya">Antalya</option>
+                    </select>
                 </div>
                 <div class="col-sm-4 align-self-center">
                     <label for="province" class="col-sm-4 col-form-label">Province</label>
@@ -132,7 +139,14 @@
                           if ($stmt->execute()) {
                             if($stmt2 = $connection->prepare( "INSERT INTO organizer VALUES ('$userID', 0) " ) ){
                               if ($stmt2->execute()) {
-                                echo "<script type='text/javascript'>alert('Registration is successful!');</script>";
+                                    $sql = "INSERT INTO wallet VALUES (NULL, 0)";
+                                    $connection->query($sql);
+                                    $sql = "SELECT wallet_id FROM wallet ORDER BY wallet_id DESC LIMIT 1";
+                                    $walletID = (($connection->query($sql))->fetch_assoc())['wallet_id'];
+                                    if ($connection->query("INSERT INTO has VALUES ( '" . $userID . "', '" . $walletID . "' )")) {
+                                        echo "<script type='text/javascript'>alert('Registration is successful!');</script>";
+                                    }
+                                
                               }
                             }
                           }
@@ -142,7 +156,7 @@
                         echo "<script type='text/javascript'>alert('This phone number is in use!');</script>";
                         if($stmt3 = $connection->prepare( "DELETE FROM user WHERE user_id = '$userID' " ) ){
                           if ($stmt3->execute()) {
-                            echo "<script type='text/javascript'>alert('Deleting!');</script>";
+                            
                           }
                         }
                     }
