@@ -47,6 +47,11 @@ li{
 list-style-type: none;
     margin-top: 20px;
 }
+.li-filter{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
 .date{
 font-size: 17px;
     font-weight: bold;
