@@ -1,5 +1,5 @@
 <?php
-require('connection.php');    
+require('connection.php');
 session_start();
 $id = $_SESSION['user_id'];
 $sql1 = "SELECT first_name, participation_points FROM non_admin NATURAL JOIN participant WHERE user_id = '$id'";
@@ -74,15 +74,16 @@ $connection->close();
    <ul>
    <?php while($result2 = $query2->fetch_assoc()){ ?>
        <li>
+          <div class="row">
 
-    
-       <div class="date"><?php echo $result2['event_date']; ?></div>
-       <div class="name"><?php echo $result2['event_title']; ?></div>
-       <div ><?php echo $result2['event_description']; ?></div>
-       <div >
-       <button class="cancel" style="background-color: #198754;" onclick="window.location.href='./event_detail.php?id=<?php echo $result2['event_id'];?>&page=1';">details</button>
-        <button class="cancel" onclick="window.location.href='./cancel_event.php?id=<?php echo $result2['event_id'];?>&user=1&ad=0';">cancel</button>
-       </div>
+               <div class="col-2 date"><?php echo $result2['event_date']; ?></div>
+               <div class="col-2 name"><?php echo $result2['event_title']; ?></div>
+               <div class="col-5"><?php echo $result2['event_description']; ?></div>
+               <div class="col-3" >
+               <button class="cancel" style="background-color: #198754;" onclick="window.location.href='./event_detail.php?id=<?php echo $result2['event_id'];?>&page=1';">details</button>
+                <button class="cancel" onclick="window.location.href='./cancel_event.php?id=<?php echo $result2['event_id'];?>&user=1&ad=0';">cancel</button>
+               </div>
+           </div>
        </li>
        <?php $count = $count + 1; }
             if ($count == 0) {

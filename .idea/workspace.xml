@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="f7c6b7d0-7244-4ac1-8ebe-ae1d129aebbc" name="Changes" comment="report-popular-unp-organizer.html">
+    <list default="true" id="f7c6b7d0-7244-4ac1-8ebe-ae1d129aebbc" name="Changes" comment="report-popular-unp-organizer.html  update">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/html/report-max-participant.html" beforeDir="false" afterPath="$PROJECT_DIR$/html/report-max-participant.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/html/report-popular-unp-organizer.html" beforeDir="false" afterPath="$PROJECT_DIR$/html/report-popular-unp-organizer.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/html/participant.html" beforeDir="false" afterPath="$PROJECT_DIR$/html/participant.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/participant_home.php" beforeDir="false" afterPath="$PROJECT_DIR$/participant_home.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/style/participant.css" beforeDir="false" afterPath="$PROJECT_DIR$/style/participant.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -90,7 +91,8 @@
       <workItem from="1671627137982" duration="1377000" />
       <workItem from="1671715069664" duration="2592000" />
       <workItem from="1671808078230" duration="8201000" />
-      <workItem from="1671821149002" duration="1643000" />
+      <workItem from="1671821149002" duration="1851000" />
+      <workItem from="1671875347827" duration="465000" />
     </task>
     <task id="LOCAL-00001" summary="login added">
       <created>1670100154978</created>
@@ -407,7 +409,14 @@
       <option name="project" value="LOCAL" />
       <updated>1671822140348</updated>
     </task>
-    <option name="localTasksCounter" value="46" />
+    <task id="LOCAL-00046" summary="report-popular-unp-organizer.html  update">
+      <created>1671822865062</created>
+      <option name="number" value="00046" />
+      <option name="presentableId" value="LOCAL-00046" />
+      <option name="project" value="LOCAL" />
+      <updated>1671822865062</updated>
+    </task>
+    <option name="localTasksCounter" value="47" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -427,7 +436,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="admin-style.css adminHome.html added" />
     <MESSAGE value="event-detail.html added" />
     <MESSAGE value="style directory added" />
     <MESSAGE value="update-profile.html added" />
@@ -452,6 +460,7 @@
     <MESSAGE value="report-max-participant.html" />
     <MESSAGE value="all reports added" />
     <MESSAGE value="report-popular-unp-organizer.html" />
-    <option name="LAST_COMMIT_MESSAGE" value="report-popular-unp-organizer.html" />
+    <MESSAGE value="report-popular-unp-organizer.html  update" />
+    <option name="LAST_COMMIT_MESSAGE" value="report-popular-unp-organizer.html  update" />
   </component>
 </project>

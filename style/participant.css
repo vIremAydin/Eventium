@@ -44,12 +44,11 @@ background-color: lightgrey;
     border-radius: 20px;
 }
 li{
-    display: flex;
-    justify-content: space-between;
+list-style-type: none;
     margin-top: 20px;
 }
 .date{
-font-size: 22px;
+font-size: 17px;
     font-weight: bold;
 }
 .name{
