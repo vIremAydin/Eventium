@@ -46,11 +46,11 @@ $query = $connection->query($sql);
 
                     <div>
                         <?php if ($result['is_banned'] == 0) { ?>
-                            <button class="btn" type="button" style="background-color: red" onclick="window.location.href='./ban_unban.php?id=<?php echo $result['user_id']; ?>&user=2&ad=1';">
+                            <button class="btn" type="button" style="background-color: red" onclick="window.location.href='./ban_unban.php?id=<?php echo $result['user_id']; ?>&ban=true';">
                                 Ban User
                             </button><?php } ?>
                         <?php if( $result['is_banned'] == 1 ) { ?>
-                            <button class="btn" type="button" style="background-color: green; color: white" onclick="window.location.href='./ban_unban.php?id=<?php echo $result['user_id'];?>&user=3&ad=1';">
+                            <button class="btn" type="button" style="background-color: green; color: white" onclick="window.location.href='./ban_unban.php?id=<?php echo $result['user_id'];?>&ban=false';">
                                 Unban User
                             </button><?php } ?>
                     </div>

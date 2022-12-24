@@ -27,7 +27,7 @@
     </div>
     <div class="block">
         <div class="label">Create Report</div>
-        <button id="org-btn3" type="button" class="btn org">Go</button>
+        <button id="org-btn3" type="button" class="btn org" onclick="window.location.href='./admin_reports.php';">Go</button>
     </div>
 
     <div style="margin: auto">

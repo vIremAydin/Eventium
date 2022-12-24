@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -23,8 +23,18 @@
         <textarea class="form-control" placeholder="Please explain details of the event..." id="description" name="description" required="required" style="height: 100px"></textarea>
     </div>
     <div class="box-item">
-        <label for="Location" class="col-sm-4 col-form-label">Location</label>
-        <input  type="text" class="form-control" id="location" name="location" placeholder="Location" required="required">
+      <label class="col-sm-4 col-form-label" for="floatingSelect">Location</label>
+
+          <select class="form-select" id="location" name="location" aria-label="Floating label select example" required="required">
+            <option value="Ankara" selected>Ankara</option>
+            <option value="Istanbul">İstanbul</option>
+            <option value="Izmir">İzmir</option>
+            <option value="Adana">Adana</option>
+            <option value="Antalya">Antalya</option>
+
+
+
+          </select>
     </div>
 
     <div class="box-item">
@@ -83,51 +93,23 @@ session_start();
 
 $uid = $_SESSION['user_id'];
 
-echo "<script type='text/javascript'>alert('AAAAAAAA!');</script>";
-
-if(isset($_POST['title'])) {
-    echo "<script type='text/javascript'>alert('title!');</script>";
-}
-if(isset($_POST['description'])) {
-    echo "<script type='text/javascript'>alert('description!');</script>";
-}
-if(isset($_POST['location'])) {
-    echo "<script type='text/javascript'>alert('location!');</script>";
-}
-if(isset($_POST['date'])) {
-    echo "<script type='text/javascript'>alert('date!');</script>";
-}
-if(isset($_POST['category'])) {
-    echo "<script type='text/javascript'>alert('category!');</script>";
-}
-if(isset($_POST['quota'])) {
-    echo "<script type='text/javascript'>alert('quota!');</script>";
-}
-if(isset($_POST['age_restriction'])) {
-    echo "<script type='text/javascript'>alert('age_restriction!');</script>";
-}
-
 if( isset($_POST['title']) && isset($_POST['description']) && isset($_POST['location']) && isset($_POST['date']) && isset($_POST['category']) && isset($_POST['quota']) ) {
-    echo "<script type='text/javascript'>alert('AAAAAAAA!');</script>";
+    
     if( $statement = $connection->prepare( "INSERT INTO event (`event_id`, `user_id`, `event_location`, `event_date`, `event_category`, `event_title`, `event_description`, `event_quota`, `age_restriction`) VALUES (NULL, ?, ?, ?, ?, ?, ?, ?, ?)") ){
         $statement->bind_param( "isssssii", $uid, $_POST['location'], $_POST['date'], $_POST['category'], $_POST['title'], $_POST['description'], $_POST['quota'], $_POST['age_restriction'] );
         if ($statement->execute()) {
-            echo "<script type='text/javascript'>alert('Event is added!');</script>";
             $sql2 = "SELECT event_id from event where user_id = '$uid' order by event_id DESC LIMIT 1";
             $query2 = $connection->query($sql2);
             if( $result2 = $query2->fetch_assoc() ) {
                 $myVar = (int) $result2['event_id'];
-                echo "<script type='text/javascript'>alert('event id is = " . $myVar . "');</script>";
-                #$sql2 = "CREATE VIEW view'(int) $result2['event_id']' AS SELECT P.first_name, P.last_name, P.date_of_birth, P.phone FROM non_admin P NATURAL JOIN joins J WHERE J.event_id = '(int) $result2['event_id']' AND P.user_id = J.user_id";
                 $sql2 = "CREATE VIEW view".strval($myVar)." AS SELECT P.first_name, P.middle_name, P.last_name, P.date_of_birth, P.phone, P.user_id FROM joins J NATURAL JOIN non_admin P WHERE J.event_id = '$myVar' AND P.user_id = J.user_id";
                 $query2 = $connection->query($sql2);
-                echo "<script type='text/javascript'>alert('view created: (fetch disi)" . $result2['first_name'] . "');</script>";
-                //if( $result2 = $query2->fetch_assoc() ) {
-                //    echo "<script type='text/javascript'>alert('view created: " . $result2['first_name'] . "');</script>";
-                //}
+                echo "<script type='text/javascript'>alert('Event is added!');</script>";
+                echo "<script>window.location = 'organizer_home.php';</script>";
             }
         } else {
             echo "<script type='text/javascript'>alert('Event creation is failed!!');</script>";
+            echo "<script>window.location = 'organizer_home.php';</script>";
         }
     }
 }

@@ -49,6 +49,7 @@
     require('connection.php');
     
     session_start();
+    $incorrect = false;
 
     if (isset($_POST['login-mail']) && strlen($_POST['login-mail']) && isset($_POST['login-password']) && strlen($_POST['login-password'])) {
 
@@ -70,7 +71,11 @@
             }
             
           } else {
-            echo "<script type='text/javascript'>alert('Incorrect information!');</script>";
+            if ($incorrect == false) {
+              echo "<script type='text/javascript'>alert('Incorrect information!');</script>";
+              $incorrect = true;
+            }
+            
           }
         }
     
@@ -91,7 +96,10 @@
                 header( "location: admin_home.php");
                 exit();
             } else {
+              if ($incorrect == false) {
                 echo "<script type='text/javascript'>alert('Incorrect information!');</script>";
+                $incorrect = true;
+              }
             }
           }
       }
@@ -118,7 +126,10 @@ if (isset($_POST['login-mail']) && strlen($_POST['login-mail']) && isset($_POST[
           echo "<script type='text/javascript'>alert('You are banned from using this application!');</script>";
         }
       } else {
-        echo "<script type='text/javascript'>alert('Incorrect information!');</script>";
+        if ($incorrect == false) {
+          echo "<script type='text/javascript'>alert('Incorrect information!');</script>";
+          $incorrect = true;
+        }
       }
     }
 
