@@ -2,10 +2,28 @@
 require('connection.php');
 session_start();
 $id = $_SESSION['user_id'];
-$sql1 = "SELECT first_name, participation_points FROM non_admin NATURAL JOIN participant WHERE user_id = '$id'";
-$sql2 = "SELECT E.event_id, event_date, event_title, N.first_name, event_description FROM non_admin N, joins J, event E WHERE J.user_id = '$id' AND J.event_id = E.event_id AND E.user_id = N.user_id AND E.event_date >= CURRENT_DATE ORDER BY event_date";
+$sql1 = "SELECT first_name, participation_points, YEAR(date_of_birth) as age_year FROM non_admin NATURAL JOIN participant WHERE user_id = '$id'";
+$sql2 = "WITH free as (SELECT E.event_id, event_date, event_title, N.first_name, event_description
+FROM non_admin N, joins J, event E
+WHERE J.user_id = '$id' AND J.event_id = E.event_id AND E.user_id = N.user_id AND E.event_date >= CURRENT_DATE
+ORDER BY event_date ),
+
+	paid as (select DISTINCT E.event_id, event_date, event_title, N.first_name, event_description
+from (purchase P NATURAL JOIN ticket T), event E, non_admin N
+WHERE P.user_id = '$id' AND T.event_id = E.event_id AND E.user_id = N.user_id AND E.event_date >= CURRENT_DATE)
+
+(select *
+from paid
+
+UNION ALL
+
+select *
+from free)
+order by event_date";
 $query1 = $connection->query($sql1);
 $result1 = $query1->fetch_assoc();
+$age = (int) date("Y") - (int)$result1['age_year'];
+
 $query2 = $connection->query($sql2);
 $count = 0;
 
@@ -59,10 +77,9 @@ $connection->close();
         </div>
     </div>
     <div class="search-box">
-        <form class="d-flex" method="post" action="./filtering.php">
+        <form class="d-flex" method="post" action="./filtering.php?age=<?php echo $age; ?>">
             <input class="form-control me-2" type="text" id="filter_title" name="filter_title" placeholder="Search an event" aria-label="Search an event">
-            <input type="hidden" id="date_sort" name="date_sort" value="ASC">
-            <button class="btn btn-outline-dark" type="submit" >Search</button>
+            <button class="btn btn-outline-dark" type="submit">Search</button>
         </form>
     </div>
 
@@ -74,16 +91,15 @@ $connection->close();
    <ul>
    <?php while($result2 = $query2->fetch_assoc()){ ?>
        <li>
-          <div class="row">
 
-               <div class="col-2 date"><?php echo $result2['event_date']; ?></div>
-               <div class="col-2 name"><?php echo $result2['event_title']; ?></div>
-               <div class="col-5"><?php echo $result2['event_description']; ?></div>
-               <div class="col-3" >
-               <button class="cancel" style="background-color: #198754;" onclick="window.location.href='./event_detail.php?id=<?php echo $result2['event_id'];?>&page=1';">details</button>
-                <button class="cancel" onclick="window.location.href='./cancel_event.php?id=<?php echo $result2['event_id'];?>&user=1&ad=0';">cancel</button>
-               </div>
-           </div>
+
+       <div class="date"><?php echo $result2['event_date']; ?></div>
+       <div class="name"><?php echo $result2['event_title']; ?></div>
+       <div ><?php echo $result2['event_description']; ?></div>
+       <div >
+       <button class="cancel" style="background-color: #198754;" onclick="window.location.href='./event_detail.php?id=<?php echo $result2['event_id'];?>&page=1';">details</button>
+        <button class="cancel" onclick="window.location.href='./cancel_event.php?id=<?php echo $result2['event_id'];?>&user=1&ad=0';">cancel</button>
+       </div>
        </li>
        <?php $count = $count + 1; }
             if ($count == 0) {
