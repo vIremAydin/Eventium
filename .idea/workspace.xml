@@ -1,11 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="f7c6b7d0-7244-4ac1-8ebe-ae1d129aebbc" name="Changes" comment="participant_home.php update">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/html/event-filter.html" beforeDir="false" afterPath="$PROJECT_DIR$/html/event-filter.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/style/participant.css" beforeDir="false" afterPath="$PROJECT_DIR$/style/participant.css" afterDir="false" />
-    </list>
+    <list default="true" id="f7c6b7d0-7244-4ac1-8ebe-ae1d129aebbc" name="Changes" comment=" update" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -91,7 +87,7 @@
       <workItem from="1671715069664" duration="2592000" />
       <workItem from="1671808078230" duration="8201000" />
       <workItem from="1671821149002" duration="1851000" />
-      <workItem from="1671875347827" duration="1685000" />
+      <workItem from="1671875347827" duration="2418000" />
     </task>
     <task id="LOCAL-00001" summary="login added">
       <created>1670100154978</created>
@@ -422,7 +418,14 @@
       <option name="project" value="LOCAL" />
       <updated>1671875887720</updated>
     </task>
-    <option name="localTasksCounter" value="48" />
+    <task id="LOCAL-00048" summary=" update">
+      <created>1671877130368</created>
+      <option name="number" value="00048" />
+      <option name="presentableId" value="LOCAL-00048" />
+      <option name="project" value="LOCAL" />
+      <updated>1671877130368</updated>
+    </task>
+    <option name="localTasksCounter" value="49" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -442,7 +445,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="style directory added" />
     <MESSAGE value="update-profile.html added" />
     <MESSAGE value="wallet.html, not finished yet" />
     <MESSAGE value="wallet.html finished" />
@@ -467,6 +469,7 @@
     <MESSAGE value="report-popular-unp-organizer.html" />
     <MESSAGE value="report-popular-unp-organizer.html  update" />
     <MESSAGE value="participant_home.php update" />
-    <option name="LAST_COMMIT_MESSAGE" value="participant_home.php update" />
+    <MESSAGE value=" update" />
+    <option name="LAST_COMMIT_MESSAGE" value=" update" />
   </component>
 </project>
