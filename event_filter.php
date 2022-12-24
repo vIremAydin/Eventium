@@ -1,5 +1,5 @@
 <?php
-require('connection.php');
+require('connection.php');    
 session_start();
 $id = $_SESSION['user_id'];
 $sql1 = "SELECT first_name, participation_points, city, YEAR(date_of_birth) as age_year FROM non_admin NATURAL JOIN participant WHERE user_id = '$id'";
@@ -9,7 +9,7 @@ $result1 = $query1->fetch_assoc();
 $age = (int) date("Y") - (int)$result1['age_year'];
 
 if ($_SESSION['sql'] == null) {
-  $sql2 = "SELECT E.event_id, E.event_date, E.event_title, CONCAT(N.first_name, ' ', N.last_name) as full_name, V.organization_name, E.event_category
+  $sql2 = "SELECT E.event_id, E.event_date, E.event_title, CONCAT(N.first_name, ' ', N.last_name) as full_name, V.organization_name, E.event_category 
         FROM event E NATURAL JOIN non_admin N NATURAL LEFT OUTER JOIN verified_organizer V
         WHERE E.event_date > CURRENT_TIMESTAMP AND event_location in (SELECT NA.city FROM non_admin NA WHERE NA.user_id = '$id' AND ('$age' >= E.age_restriction OR E.age_restriction IS NULL))";
 } else {
@@ -103,7 +103,7 @@ $connection->close();
 
   <ul>
   <?php while($result2 = $query2->fetch_assoc()){?>
-      <li class="li-filter">
+      <li>
         <div class="date"><?php echo $result2['event_date']; ?></div>
         <div class="name"><?php echo $result2['event_title']; ?></div>
         <div class="name">

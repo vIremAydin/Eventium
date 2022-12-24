@@ -29,9 +29,21 @@
     $result3 = $query3->fetch_assoc();
 
     $sql4 = "SELECT row_number() over ( PARTITION by event_id ORDER BY ticket_price DESC ) category, ticket_price FROM price WHERE event_id = '$eventID'";
-    $query4 = $connection->query($sql4);    
+    $query4 = $connection->query($sql4);
 
-    $connection->close();   
+    if( $statement = $connection->prepare( "select count(*) as c from (ticket T NATURAL JOIN purchase P), event E WHERE T.event_id = ? and E.event_id = T.event_id") ) {
+      $toplam = 0;
+        $statement->bind_param( "i", $eventID);
+        if( $statement->execute()){
+          $statement->bind_result($toplam);
+            if( $statement->fetch()){
+              $kalan = $result2['max_ticket_per_part'] - $toplam;
+          } else {
+          }
+        }
+    }
+
+    $connection->close();
 ?>
 
 <!DOCTYPE html>
@@ -132,7 +144,7 @@
                     $_SESSION['event_id'] = $eventID; ?>
                     <div style="display: flex; margin: 15px">
                         <label for="amount" class="col-sm-8 col-form-label">Enter Ticket Amount</label>
-                        <input  type="number" class="form-control" id="amount" name="amount" placeholder="Amount" min="0" max="<?php echo $result2['max_ticket_per_part']; ?>">
+                        <input  type="number" class="form-control" id="amount" name="amount" placeholder="Amount" min="1" max="<?php echo $kalan; ?>" required="required">
                     </div>
                     <div style="display: flex; margin: 15px">
                         <label for="refund1" class="col-sm-8 col-form-label">Are tickets refundable: </label>

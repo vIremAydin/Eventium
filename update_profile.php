@@ -1,5 +1,5 @@
 <?php
-require('connection.php');    
+require('connection.php');
 session_start();
 $id = $_SESSION['user_id'];
 $sql1 = "SELECT * FROM non_admin NATURAL JOIN participant NATURAL JOIN user WHERE user_id = '$id'";
@@ -89,7 +89,14 @@ $connection->close();
 
             <div class="col-sm-4 align-self-center">
                 <label for="city" class="col-sm-4 col-form-label">City</label>
-                <input type="text" class="form-control" id="city" name="city" placeholder="<?php echo $result1['city']; ?>">
+                <select class="form-control" name="city" id="city">
+                    <option value="" disabled selected><?php echo $result1['city']; ?></option>
+                    <option value="Istanbul">İstanbul</option>
+                    <option value="Ankara">Ankara</option>
+                    <option value="Izmir">İzmir</option>
+                    <option value="Adana">Adana</option>
+                    <option value="Antalya">Antalya</option>
+                </select>
             </div>
             <div class="col-sm-4 align-self-center">
                 <label for="province" class="col-sm-4 col-form-label">Province</label>

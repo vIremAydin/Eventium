@@ -8,11 +8,9 @@ $eventID = $_GET['data'];
 
 $sql = "SELECT event_date FROM event WHERE event_id = '$eventID'";
 $eventDate = (($connection->query($sql))->fetch_assoc())['event_date'];
-echo "<script type='text/javascript'>alert('".$eventDate."');</script>";
 
 $sql = "SELECT E.event_date FROM joins J JOIN event E WHERE J.event_id = E.event_id AND J.user_id = '$userID' AND E.event_date = '".$eventDate."'";
 $newEventDate = (($connection->query($sql))->fetch_assoc())['event_date'];
-echo "<script type='text/javascript'>alert('".$newEventDate."');</script>";
 
 if ($eventDate === $newEventDate) {
   echo "<script type='text/javascript'>alert('Collision!');</script>";
