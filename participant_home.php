@@ -96,10 +96,14 @@ $connection->close();
 
        <div class="col-2 date"><?php echo $result2['event_date']; ?></div>
        <div class="col-2 name"><?php echo $result2['event_title']; ?></div>
-       <div class="col-7" ><?php echo $result2['event_description']; ?></div>
+       <div class="col-6" ><?php echo $result2['event_description']; ?></div>
        <div class="col-1" >
+
        <button class="cancel" style="background-color: #198754;" onclick="window.location.href='./event_detail.php?id=<?php echo $result2['event_id'];?>&page=1';">details</button>
+         </div>
+         <div class="col-1" >
         <button class="cancel" onclick="window.location.href='./cancel_event.php?id=<?php echo $result2['event_id'];?>&user=1&ad=0';">cancel</button>
+
        </div>
        </div>
        </li>
