@@ -98,6 +98,7 @@ $connection->close();
        <div class="col-2 name"><?php echo $result2['event_title']; ?></div>
        <div class="col-6" ><?php echo $result2['event_description']; ?></div>
        <div class="col-1" >
+
        <button class="cancel" style="background-color: #198754;" onclick="window.location.href='./event_detail.php?id=<?php echo $result2['event_id'];?>&page=1';">details</button>
        </div>
        <div class="col-1" >
