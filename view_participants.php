@@ -15,7 +15,15 @@ if ($userType == 2) {       //enters from organizer home page
     $query2 = $connection->query($sql2);
 } else if ($userType == 3) {            // enters from verified organzer home page
     $sql2 = "SELECT DISTINCT N.user_id, N.first_name, N.middle_name, N.last_name, N.date_of_birth, N.phone FROM purchase P NATURAL JOIN ticket T NATURAL JOIN non_admin N WHERE T.event_id = '$eventID'";
-    $query2 = $connection->query($sql2);
+    $query2 = $connection->query($sql2);    
+
+    if ($query2->fetch_assoc()) {
+        $sql2 = "SELECT DISTINCT N.user_id, N.first_name, N.middle_name, N.last_name, N.date_of_birth, N.phone FROM purchase P NATURAL JOIN ticket T NATURAL JOIN non_admin N WHERE T.event_id = '$eventID'";
+        $query2 = $connection->query($sql2);
+    } else {
+        $sql2 = "SELECT N.first_name, N.middle_name, N.last_name, N.date_of_birth, N.phone, N.user_id FROM joins J NATURAL JOIN non_admin N WHERE J.user_id = N.user_id AND J.event_id = '$eventID'";
+        $query2 = $connection->query($sql2);
+    }
 }
 
 ?>

@@ -1,17 +1,36 @@
-<?php 
+<?php
 session_start();
 require('connection.php');
 
-$sql = "SELECT N.city, CONCAT(N.first_name, ' ', N.last_name, ' ( ' , MAX(O.organizer_popularity), ' ) ' ) as maxPerson, CONCAT(N.first_name, ' ' ,N.last_name, ' ( ' , MIN(O.organizer_popularity), ' ) '  ) as minPerson
+$sql = "with maxp(event_location, organizer_popularity) as (SELECT N.city, MAX(O.organizer_popularity)
         FROM organizer O NATURAL JOIN non_admin N
         WHERE 5 <= (SELECT COUNT(*)
                     FROM event E
                     WHERE O.user_id = E.user_id AND 2 <= (SELECT COUNT( DISTINCT Ev.event_location)
                                                         FROM event Ev NATURAL JOIN organizer Org
                                                         WHERE Org.user_id = Ev.user_id AND E.user_id = Org.user_id
-                                                        GROUP BY Org.user_id)  
+                                                        GROUP BY Org.user_id)
                     )
-        GROUP BY N.city ";
+        GROUP BY N.city ),
+        minp(event_location, organizer_popularity) as  (SELECT N.city, MIN(O.organizer_popularity)
+        FROM organizer O NATURAL JOIN non_admin N
+        WHERE 5 <= (SELECT COUNT(*)
+                    FROM event E
+                    WHERE O.user_id = E.user_id AND 2 <= (SELECT COUNT( DISTINCT Ev.event_location)
+                                                        FROM event Ev NATURAL JOIN organizer Org
+                                                        WHERE Org.user_id = Ev.user_id AND E.user_id = Org.user_id
+                                                        GROUP BY Org.user_id)  )
+                                                    GROUP BY N.city    ),
+		maxPerson(event_location, maxfullname) as (SELECT event_location, CONCAT(first_name, ' ', last_name, ' ( ' , MAX(organizer_popularity), ' ) ' ) as maxPerson
+												FROM maxp NATURAL JOIN organizer NATURAL JOIN non_admin
+                                                GROUP BY event_location),
+		minPerson(event_location, minfullname) as (SELECT event_location, CONCAT(first_name, ' ', last_name, ' ( ' , MAX(organizer_popularity), ' ) ' ) as maxPerson
+												FROM minp NATURAL JOIN organizer NATURAL JOIN non_admin
+                                                 GROUP BY event_location)
+
+SELECT *
+from maxPerson NATURAL JOIN minPerson
+ GROUP BY event_location";
 
 $query = $connection->query($sql);
 
@@ -80,9 +99,9 @@ $query = $connection->query($sql);
             <tbody>
             <?php while( $result = $query->fetch_assoc() ){ ?>
             <tr>
-                <th scope="row"><?php echo $result['city']; ?></th>
-                <td><?php echo $result['maxPerson']; ?></td>
-                <td><?php echo $result['minPerson']; ?></td>
+                <th scope="row"><?php echo $result['event_location']; ?></th>
+                <td><?php echo $result['maxfullname']; ?></td>
+                <td><?php echo $result['minfullname']; ?></td>
 
             </tr>
             <?php } ?>

@@ -1,4 +1,4 @@
-<?php 
+<?php
 session_start();
 require('connection.php');
 $uid = $_SESSION['user_id'];
@@ -76,7 +76,6 @@ $myCount = 0;
             function add() {
                 index++;
                 <?php $myCount++;?>
-                alert(index);
                 document.cookie = "index = " + index
 
                 document.getElementById("all-ticket").innerHTML += "            <div id='" + index + "' class=\"box-item\">\n" +
@@ -172,7 +171,7 @@ $myCount = 0;
 
 <?php
 if (isset($_POST['create']) && $myCount > 0) {
-    echo "<script type='text/javascript'>alert('" . $myCount . "');</script>";
+    //echo "<script type='text/javascript'>alert('" . $myCount . "');</script>";
 }
 
 if(  $_POST['btnradio'] == "free" ){
@@ -196,16 +195,16 @@ if(  $_POST['btnradio'] == "free" ){
                 $sql = "SELECT event_id FROM event WHERE user_id = '$uid' ORDER BY event_id DESC LIMIT 1";
                 $eventID = (($connection->query($sql))->fetch_assoc())['event_id'];
                 $connection->query("INSERT INTO paid_event VALUES ('$eventID', '".(int)$_POST['max_ticket']."', '$uid')");
-                
+
                 $myPhpVar= $_COOKIE['index'];
-                echo "<script type='text/javascript'>alert('".$myPhpVar."');</script>";
+                //echo "<script type='text/javascript'>alert('".$myPhpVar."');</script>";
                 //echo $myPhpVar;
-                
+
                 $i = 1;
                 while ($myPhpVar != 0) {
-                    echo "<script type='text/javascript'>alert('IN WHILE!');</script>";
+                    //echo "<script type='text/javascript'>alert('IN WHILE!');</script>";
                     $myString = 'price'.$myPhpVar;
-                    echo "<script type='text/javascript'>alert('".$myString."');</script>";
+                    //echo "<script type='text/javascript'>alert('".$myString."');</script>";
                     $connection->query("INSERT INTO price VALUES ('$eventID', '".(int)$_POST[$myString]."')");
                     $i++;
                     $myPhpVar--;
@@ -218,7 +217,7 @@ if(  $_POST['btnradio'] == "free" ){
             }
         }
     }
-    
+
 }
 
 ?>

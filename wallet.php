@@ -115,6 +115,25 @@ $connection->close();
 </div>
 
 
+
+<script>
+    function fun(index) {
+        var elements = document.getElementsByClassName( "a"),
+            n = elements.length;
+        for (var i = 0; i < n; i++) {
+            var e = elements[i];
+
+           if(i !== index)
+                e.style.backgroundColor = 'lightgrey';
+            else
+               e.style.backgroundColor = 'green';
+
+        }
+        return false;
+    }
+
+</script>
+
 <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
@@ -125,13 +144,14 @@ $connection->close();
             <form method="post" action="./add_balance.php">
                 <div class="modal-body">
                     <div class="card-container">
-                        <?php while($result4 = $query4->fetch_assoc()){ ?>
+                        <?php $index = 0; 
+                        while($result4 = $query4->fetch_assoc()){?>
                             <div class="card">
                                 <div class="card-item"><?php echo $result4['card_no'];?></div>
                                 <div class="card-item">Valid by: <?php echo date("m", strtotime($result4['valid_date'])) . "/" . date("y", strtotime($result4['valid_date'])); ?></div>
-                                <button class="btn btn-light" onclick="return false;">Select</button>
+                                <button type="button" class="a btn btn-light" onclick="fun(<?php echo $index;?>)">Select</button>
                             </div>
-                        <?php } ?>
+                        <?php $index++;} ?>
                         <div style="display: flex; margin: 15px">
                             <label for="amount" class="col-sm-4 col-form-label">Enter An Amount</label>
                             <input type="number" class="form-control" id="amount" name="amount" placeholder="Amount" min="0">

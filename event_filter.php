@@ -103,18 +103,18 @@ $connection->close();
 
   <ul>
   <?php while($result2 = $query2->fetch_assoc()){?>
-      <li class="li-filter">
-        <div class="date"><?php echo $result2['event_date']; ?></div>
-        <div class="name"><?php echo $result2['event_title']; ?></div>
-        <div class="name">
+      <li class="li-filter row">
+        <div class="date col-2 mt-2"><?php echo $result2['event_date']; ?></div>
+        <div class="name col-3 mt-2"><?php echo $result2['event_title']; ?></div>
+        <div class="name col-3 mt-2">
           <?php if (isset($result2['organization_name'])) {
             echo $result2['organization_name'];
           } else {
             echo $result2['full_name'];
           } ?>
         </div>
-        <div class="name"><?php echo $result2['event_category']; ?></div>
-        <div >
+        <div class="name col-3 mt-2"><?php echo $result2['event_category']; ?></div>
+        <div  class="name col-1 mt-2">
           <button class="cancel" style="background-color: #198754;" onclick="window.location.href='./event_detail.php?id=<?php echo $result2['event_id']; ?>&page=2';">details</button>
         </div>
        </li>

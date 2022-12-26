@@ -62,8 +62,8 @@ require('connection.php');
     </div>
     <div class="block-report">
         <div class="in-block">
-            <div class="label">Average Number</div>
-            <button id="org-btn5" type="button" class="btn org" data-bs-toggle="tooltip" data-bs-placement="top" onclick="window.location.href='./report5.php';" data-bs-html="true" title="Find the average number of participants of events for each category" >Report Create</button>
+            <div class="label">Expensive and Cheap Tickets</div>
+            <button id="org-btn5" type="button" class="btn org" data-bs-toggle="tooltip" data-bs-placement="top" onclick="window.location.href='./report5.php';" data-bs-html="true" title="Find the most expensive and the cheapest tickets for each category" >Report Create</button>
         </div>
         <div class="in-block">
             <div class="label" style="font-size: 17px">Popular and Unpopular Organizer</div>

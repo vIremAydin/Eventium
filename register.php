@@ -9,8 +9,8 @@
 
     <title>Register Page</title>
 </head>
-<body style="background-size: cover;background-image: url('icons/messi.jpg'); color: aliceblue">
-
+<!--body style="background-size: cover;background-image: url('icons/messi.jpg'); color: aliceblue"-->
+<body>
 <div>
     <div class="mx-auto" style="width: 500px; color:red">
         <h1 class="my-4">Register To Eventium</h1>

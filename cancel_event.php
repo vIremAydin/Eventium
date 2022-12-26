@@ -11,12 +11,33 @@ $userID = $_SESSION['user_id'];
 if ( $userType == 1 ) {     // enters from participant home page
     $sql1 = " DELETE FROM joins WHERE event_id = '$eventID' AND user_id = '$userID'";
     if($connection->query($sql1)) {
-        header("Location: participant_home.php");
+            $myVar = $eventID;
+            $selam = 0;
+
+             //echo "<script type='text/javascript'>alert('1!');</script>";
+            if ($statement = $connection->prepare("SELECT count(*) FROM paid_event WHERE event_id = ?")) {
+                //echo "<script type='text/javascript'>alert('2!');</script>";
+                $statement->bind_param( "i", $myVar);
+                //echo "<script type='text/javascript'>alert('3!');</script>";
+                if ($statement->execute()) {
+                    //echo "<script type='text/javascript'>alert('4!');</script>";
+                    $statement->bind_result($selam);
+                    //echo "<script type='text/javascript'>alert('5!');</script>";
+                    if ($statement->fetch()) {
+                        //echo "<script type='text/javascript'>alert('6!');</script>";
+                    }
+                }
+            }
+        if ($selam == 1) {
+            header("Location: ticket.php");
+        } else {
+            header("Location: participant_home.php");
+        }
     } else {
         echo "<script type='text/javascript'>alert('Participation of . $eventID . can not be cancelled!');</script>";
         echo("<script>window.location = 'participant_home.php';</script>");
     }
-        
+
 } else if ( $userType == 2 ){       // enters from organizer home page
     $sql2 = " DELETE FROM joins WHERE event_id = '$eventID'";
     $query2 = $connection->query($sql2);
@@ -44,7 +65,7 @@ if ( $userType == 1 ) {     // enters from participant home page
         $sql4 = "DELETE FROM purchase WHERE ticket_id = '".$result['ticket_id']."'";
         $connection->query($sql4);
     }
-    
+
     $sql4 = "DELETE FROM ticket WHERE event_id = '$eventID'";
     if ($connection->query($sql4)) {
         $sql4 = "DELETE FROM price WHERE event_id = '$eventID'";
@@ -85,9 +106,9 @@ if ( $userType == 1 ) {     // enters from participant home page
         }
         echo("<script>window.location = 'verifiedOrganizer_home.php';</script>");
     }
-    
-    
+
+
 }
 
-$connection->close();   
+$connection->close();
 ?>

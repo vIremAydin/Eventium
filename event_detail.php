@@ -31,9 +31,9 @@
     $sql4 = "SELECT row_number() over ( PARTITION by event_id ORDER BY ticket_price DESC ) category, ticket_price FROM price WHERE event_id = '$eventID'";
     $query4 = $connection->query($sql4);
 
-    if( $statement = $connection->prepare( "select count(*) as c from (ticket T NATURAL JOIN purchase P), event E WHERE T.event_id = ? and E.event_id = T.event_id") ) {
+    if( $statement = $connection->prepare( "select count(*) as c from (ticket T NATURAL JOIN purchase P), event E WHERE T.event_id = ? and E.event_id = T.event_id and P.user_id = ?") ) {
       $toplam = 0;
-        $statement->bind_param( "i", $eventID);
+        $statement->bind_param( "ii", $eventID, $userID);
         if( $statement->execute()){
           $statement->bind_result($toplam);
             if( $statement->fetch()){
@@ -102,7 +102,7 @@
 <div class="btn-container">
 <?php if( isset($result3['user_id']) && isset($result3['event_id']) ){ ?>
     <div class="btn" style="background-color: gray; border-width: 0; color: whitesmoke">Joined</div>
-<?php } else if ( isset($result2['organization_name'])  ){ ?>
+<?php } else if ( isset($result2['organization_name']) && isset($result2['max_ticket_per_part'])  ){ ?>
     <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#exampleModal" style="margin-left: 70px">Purchase!</button>
 <?php } else { ?>
     <button type="button" class="btn btn-success" style="margin-left: 70px" onclick="window.location.href='./join_event.php?data=<?php echo $result2['event_id']; ?>';">Join!</button>

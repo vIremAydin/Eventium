@@ -1,4 +1,4 @@
-<?php 
+<?php
 session_start();
 require('connection.php');
 
@@ -61,7 +61,7 @@ $query = $connection->query($sql);
     <table class="p-container table table-striped">
             <thead>
             <tr>
-                <th scope="col">City</th>
+                <th scope="col">Category</th>
                 <th scope="col">The Most Expensive Ticket Price</th>
                 <th scope="col">The Cheapest Ticket Price</th>
             </tr>
