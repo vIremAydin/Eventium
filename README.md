@@ -16,4 +16,4 @@ people who attended etc.
 ### Grades
 **Proposal Report:** 99\
 **Design Report:** 99\
-**Final Report:** 100\
+**Final Report:** 100
