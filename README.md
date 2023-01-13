@@ -14,6 +14,6 @@ system reports like finding the most popular events in a month based on the numb
 people who attended etc.
 
 ### Grades
-**Proposal Report:** 99
-**Design Report:** 99
-**Final Report:** 100
+**Proposal Report:** 99\
+**Design Report:** 99\
+**Final Report:** 100\
