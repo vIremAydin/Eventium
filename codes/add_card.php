@@ -5,9 +5,7 @@ $id = $_SESSION['user_id'];
 $sql1 = "SELECT participation_points FROM participant WHERE user_id = '$id'";
 $query1 = $connection->query($sql1);
 $result1 = $query1->fetch_assoc();
-
 $connection->close();
-
 ?>
 
 <!DOCTYPE html>
